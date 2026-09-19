@@ -13,216 +13,312 @@ content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
 <style>
 
+/* =========================
+   基本設定
+========================= */
+
 *{
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-html{
-  -webkit-text-size-adjust:100%;
+html,body{
+  margin:0;
+  padding:0;
 }
 
 body{
-  margin:0;
-  padding:0;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
+    "Helvetica Neue",
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     sans-serif;
 
-  background:#f2f4f7;
-  color:#222;
+  background:#f4f5f7;
+  color:#333;
+  padding-bottom:105px;
 }
 
 
-/* ===== ヘッダー ===== */
+/* =========================
+   ヘッダー
+========================= */
 
 header{
-  background:#1769aa;
+  background:linear-gradient(135deg,#18a8e8,#078bcf);
   color:#fff;
-  text-align:center;
-
   padding:
-    calc(16px + env(safe-area-inset-top))
-    12px
-    17px;
+    calc(22px + env(safe-area-inset-top))
+    30px
+    25px;
 }
 
-header h1{
+.header-title{
+  font-size:29px;
+  font-weight:800;
+  letter-spacing:.5px;
   margin:0;
-  font-size:22px;
-  font-weight:700;
 }
 
-header p{
-  margin:6px 0 0;
-  font-size:12px;
-  opacity:.9;
+.header-sub{
+  margin-top:8px;
+  font-size:16px;
+  opacity:.85;
 }
 
 
-/* ===== メイン ===== */
+/* =========================
+   HOME写真
+========================= */
 
-main{
+.hero{
   width:100%;
-  max-width:600px;
-
-  margin:0 auto;
-
-  padding:
-    14px
-    12px
-    calc(30px + env(safe-area-inset-bottom));
-}
-
-
-/* ===== HOME写真 ===== */
-
-.home-photo{
-  width:100%;
-  margin-bottom:16px;
-
-  background:#fff;
-
-  border-radius:15px;
+  background:#ddd;
   overflow:hidden;
-
-  box-shadow:
-    0 2px 10px rgba(0,0,0,.13);
 }
 
-.home-photo img{
-  display:block;
-
+.hero img{
   width:100%;
-  height:auto;
-
-  max-height:300px;
-
+  height:180px;
+  display:block;
   object-fit:cover;
 }
 
 
-/* ===== メニュー ===== */
+/* =========================
+   メイン
+========================= */
 
-.menu{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+main{
+  padding:27px 31px 30px;
+  max-width:760px;
+  margin:0 auto;
 }
 
-.menu-btn{
-  display:flex;
-  align-items:center;
+.section-title{
+  font-size:21px;
+  font-weight:700;
+  color:#555;
+  margin:0 0 26px;
+}
 
-  width:100%;
-  min-height:72px;
 
-  padding:14px 17px;
+/* =========================
+   カード配置
+========================= */
 
-  background:#fff;
-  color:#222;
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px 25px;
+}
+
+
+/* =========================
+   共通カード
+========================= */
+
+.menu-card{
+  min-height:205px;
+
+  border-radius:30px;
 
   text-decoration:none;
+  color:#fff;
 
-  border-radius:14px;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.12);
-
-  -webkit-tap-highlight-color:transparent;
-}
-
-.menu-btn:active{
-  transform:scale(.98);
-  background:#e9eef3;
-}
-
-
-/* ===== アイコン ===== */
-
-.icon{
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
 
-  width:48px;
+  text-align:center;
 
-  flex-shrink:0;
+  padding:22px 12px;
 
-  font-size:30px;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.15);
+
+  transition:
+    transform .12s ease,
+    opacity .12s ease;
+}
+
+.menu-card:active{
+  transform:scale(.96);
+  opacity:.9;
 }
 
 
-/* ===== 文字 ===== */
+/* =========================
+   アイコン
+========================= */
 
-.menu-text{
-  flex:1;
+.menu-icon{
+  font-size:43px;
+  line-height:1;
+  margin-bottom:16px;
+}
 
-  padding-left:8px;
 
-  font-size:18px;
+/* =========================
+   カード文字
+========================= */
+
+.menu-title{
+  font-size:24px;
+  font-weight:800;
+  line-height:1.25;
+}
+
+.menu-desc{
+  font-size:15px;
+  font-weight:600;
+  margin-top:13px;
+  opacity:.9;
+  line-height:1.4;
+}
+
+
+/* =========================
+   カードカラー
+========================= */
+
+.blue{
+  background:linear-gradient(135deg,#35b5ff,#087eea);
+}
+
+.green{
+  background:linear-gradient(135deg,#36d77a,#0eb54e);
+}
+
+.orange{
+  background:linear-gradient(135deg,#ffa33b,#ff6b20);
+}
+
+.purple{
+  background:linear-gradient(135deg,#bc4cff,#8520dc);
+}
+
+.pink{
+  background:linear-gradient(135deg,#ff527e,#ec2860);
+}
+
+.teal{
+  background:linear-gradient(135deg,#40caca,#13a5a6);
+}
+
+.yellow{
+  background:linear-gradient(135deg,#ffd44b,#ffb900);
+}
+
+.indigo{
+  background:linear-gradient(135deg,#7182ff,#4d5de5);
+}
+
+
+/* =========================
+   下部固定ナビ
+========================= */
+
+.bottom-nav{
+
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:
+    calc(86px + env(safe-area-inset-bottom));
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  background:rgba(255,255,255,.97);
+
+  border-top:1px solid #ddd;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  z-index:1000;
+
+  box-shadow:
+    0 -2px 12px rgba(0,0,0,.05);
+}
+
+.nav-item{
+
+  text-decoration:none;
+
+  color:#555;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:15px;
   font-weight:700;
 }
 
-.menu-sub{
-  display:block;
+.nav-icon{
+  font-size:29px;
+  margin-bottom:5px;
+}
 
-  margin-top:3px;
-
-  font-size:11px;
-  font-weight:400;
-
-  color:#777;
+.nav-item.active{
+  color:#159ad9;
 }
 
 
-/* ===== 矢印 ===== */
+/* =========================
+   iPhone小画面
+========================= */
 
-.arrow{
-  padding-left:8px;
+@media(max-width:430px){
 
-  color:#999;
+  header{
+    padding-left:20px;
+    padding-right:20px;
+  }
 
-  font-size:22px;
-}
+  .header-title{
+    font-size:25px;
+  }
 
+  .hero img{
+    height:155px;
+  }
 
-/* ===== フッター ===== */
+  main{
+    padding-left:18px;
+    padding-right:18px;
+  }
 
-footer{
-  margin-top:24px;
+  .menu-grid{
+    gap:16px;
+  }
 
-  text-align:center;
+  .menu-card{
+    min-height:175px;
+    border-radius:25px;
+  }
 
-  color:#888;
+  .menu-icon{
+    font-size:37px;
+    margin-bottom:13px;
+  }
 
-  font-size:11px;
-}
-
-
-/* ===== 小さいiPhone ===== */
-
-@media(max-width:380px){
-
-  header h1{
+  .menu-title{
     font-size:20px;
   }
 
-  .menu-btn{
-    min-height:68px;
-  }
-
-  .menu-text{
-    font-size:17px;
-  }
-
-  .icon{
-    width:43px;
-    font-size:27px;
+  .menu-desc{
+    font-size:13px;
   }
 
 }
@@ -234,69 +330,69 @@ footer{
 <body>
 
 
+<!-- ======================
+     ヘッダー
+======================= -->
+
 <header>
 
-  <h1>広川護岸（17工区）工事</h1>
+  <h1 class="header-title">
+    広川護岸（17工区）工事
+  </h1>
 
-  <p>現場管理ポータル</p>
+  <div class="header-sub">
+    現場管理ホーム
+  </div>
 
 </header>
 
 
-<main>
 
+<!-- ======================
+     HOME写真
+======================= -->
 
-<!-- HOME写真 -->
-
-<div class="home-photo">
+<div class="hero">
 
   <img
-    src="./home.jpg"
-    alt="広川護岸（17工区）工事"
-  >
+    src="home.jpg"
+    alt="広川護岸（17工区）工事">
 
 </div>
 
 
 
-<div class="menu">
+<!-- ======================
+     メインメニュー
+======================= -->
+
+<main>
+
+<h2 class="section-title">
+使用するメニューを選択してください
+</h2>
+
+
+<div class="menu-grid">
 
 
 <!-- 現場計算 -->
 
-<a href="./calc/" class="menu-btn">
+<a
+href="calc/index.html"
+class="menu-card blue">
 
-  <span class="icon">📐</span>
+<div class="menu-icon">
+🧮
+</div>
 
-  <span class="menu-text">
-    現場計算
+<div class="menu-title">
+現場計算
+</div>
 
-    <span class="menu-sub">
-      座標・勾配・距離など
-    </span>
-  </span>
-
-  <span class="arrow">›</span>
-
-</a>
-
-
-
-<!-- 施工資料 -->
-
-<a href="./docs/" class="menu-btn">
-
-  <span class="icon">📚</span>
-
-  <span class="menu-text">
-    施工資料
-
-    <span class="menu-sub">
-      施工管理の手引き・共通仕様書
-    </span>
-  </span>
-
-  <span class="arrow">›</span>
+<div class="menu-desc">
+座標・勾配・距離など
+</div>
 
 </a>
 
@@ -304,19 +400,22 @@ footer{
 
 <!-- SiteBox -->
 
-<a href="sitebox://" class="menu-btn">
+<a
+href="#"
+onclick="openSiteBox();return false;"
+class="menu-card green">
 
-  <span class="icon">📱</span>
+<div class="menu-icon">
+📷
+</div>
 
-  <span class="menu-text">
-    SiteBox
+<div class="menu-title">
+SiteBox
+</div>
 
-    <span class="menu-sub">
-      現場写真・電子黒板
-    </span>
-  </span>
-
-  <span class="arrow">›</span>
+<div class="menu-desc">
+現場写真・電子黒板
+</div>
 
 </a>
 
@@ -324,19 +423,21 @@ footer{
 
 <!-- 数量表 -->
 
-<a href="./data/金入.pdf" class="menu-btn">
+<a
+href="data/金入.pdf"
+class="menu-card orange">
 
-  <span class="icon">📊</span>
+<div class="menu-icon">
+📊
+</div>
 
-  <span class="menu-text">
-    数量表
+<div class="menu-title">
+数量表
+</div>
 
-    <span class="menu-sub">
-      金入PDF
-    </span>
-  </span>
-
-  <span class="arrow">›</span>
+<div class="menu-desc">
+金入設計書を表示
+</div>
 
 </a>
 
@@ -345,36 +446,212 @@ footer{
 <!-- 図面 -->
 
 <a
-  href="./data/図面（507-45679-002）.dwx"
-  class="menu-btn"
->
+href="data/図面（507-45679-002）.dwx"
+class="menu-card purple">
 
-  <span class="icon">📐</span>
+<div class="menu-icon">
+📐
+</div>
 
-  <span class="menu-text">
-    図面
+<div class="menu-title">
+図面
+</div>
 
-    <span class="menu-sub">
-      工事図面
-    </span>
-  </span>
+<div class="menu-desc">
+工事図面を表示
+</div>
 
-  <span class="arrow">›</span>
+</a>
+
+
+
+<!-- 施工管理手引き -->
+
+<a
+href="data/土木工事施工管理の手引き.pdf"
+class="menu-card pink">
+
+<div class="menu-icon">
+📕
+</div>
+
+<div class="menu-title">
+施工管理手引き
+</div>
+
+<div class="menu-desc">
+福岡県 施工管理基準
+</div>
+
+</a>
+
+
+
+<!-- 共通仕様書 -->
+
+<a
+href="data/土木工事共通仕様書.pdf"
+class="menu-card teal">
+
+<div class="menu-icon">
+📘
+</div>
+
+<div class="menu-title">
+共通仕様書
+</div>
+
+<div class="menu-desc">
+福岡県 土木工事
+</div>
+
+</a>
+
+
+
+<!-- 写真 -->
+
+<a
+href="photos/index.html"
+class="menu-card yellow">
+
+<div class="menu-icon">
+📸
+</div>
+
+<div class="menu-title">
+写真
+</div>
+
+<div class="menu-desc">
+現場写真管理
+</div>
+
+</a>
+
+
+
+<!-- 書類 -->
+
+<a
+href="documents/index.html"
+class="menu-card indigo">
+
+<div class="menu-icon">
+📁
+</div>
+
+<div class="menu-title">
+工事書類
+</div>
+
+<div class="menu-desc">
+施工管理・提出書類
+</div>
 
 </a>
 
 
 </div>
 
-
-<footer>
-
-  広川護岸（17工区）工事
-
-</footer>
-
-
 </main>
+
+
+
+<!-- ======================
+     下部固定メニュー
+======================= -->
+
+<nav class="bottom-nav">
+
+
+<a
+href="index.html"
+class="nav-item active">
+
+<div class="nav-icon">
+🏠
+</div>
+
+<div>
+ホーム
+</div>
+
+</a>
+
+
+
+<a
+href="calc/index.html"
+class="nav-item">
+
+<div class="nav-icon">
+🧮
+</div>
+
+<div>
+計算
+</div>
+
+</a>
+
+
+
+<a
+href="photos/index.html"
+class="nav-item">
+
+<div class="nav-icon">
+📷
+</div>
+
+<div>
+写真
+</div>
+
+</a>
+
+
+
+<a
+href="data/金入.pdf"
+class="nav-item">
+
+<div class="nav-icon">
+📊
+</div>
+
+<div>
+数量表
+</div>
+
+</a>
+
+
+</nav>
+
+
+
+<script>
+
+/* =========================
+   SiteBox起動
+========================= */
+
+function openSiteBox(){
+
+  /*
+   SiteBoxの起動URLを
+   現在使用しているものに
+   変更できます。
+  */
+
+  window.location.href =
+    "sitebox://";
+
+}
+
+</script>
 
 
 </body>
