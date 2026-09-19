@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-<
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<title>広川護岸 現場計算</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
 
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -12,7 +23,7 @@ body{
 header{
   background:#1769aa;
   color:white;
-  padding:18px;
+  padding:18px 12px;
   text-align:center;
 }
 
@@ -23,80 +34,102 @@ header h1{
 
 header p{
   margin:5px 0 0;
-  font-size:13px;
+  font-size:12px;
 }
 
 main{
   max-width:600px;
   margin:auto;
-  padding:12px;
+  padding:10px;
 }
 
 .card{
   background:white;
-  margin-bottom:14px;
-  padding:16px;
+  margin-bottom:12px;
+  padding:14px;
   border-radius:14px;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
 h2{
-  margin:0 0 14px;
-  font-size:17px;
-  color:#0866ad;
+  margin:0 0 12px;
+  font-size:16px;
+  color:#0068b7;
 }
 
 label{
   display:block;
-  font-size:13px;
+  font-size:12px;
   font-weight:600;
-  margin-top:10px;
-  margin-bottom:5px;
+  margin-top:9px;
+  margin-bottom:4px;
 }
 
 input,
 select{
   width:100%;
-  padding:12px;
-  border:1px solid #bbb;
-  border-radius:8px;
+  padding:10px;
   font-size:16px;
+  border:1px solid #bbb;
+  border-radius:7px;
   background:white;
 }
 
 button{
   width:100%;
-  margin-top:12px;
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  background:#176fb3;
+  border:0;
+  border-radius:7px;
+  padding:10px;
+  margin-top:10px;
+  background:#1976b9;
   color:white;
-  font-size:15px;
-  font-weight:bold;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:active{
+  opacity:.8;
 }
 
 .result{
-  margin-top:9px;
-  padding:12px;
-  min-height:40px;
-  background:#e8f3fd;
-  border-radius:8px;
-  font-size:14px;
+  margin-top:8px;
+  padding:11px;
+  background:#e5f2fd;
+  border-radius:7px;
+  font-size:13px;
   line-height:1.7;
+  white-space:pre-line;
+  min-height:42px;
+}
+
+.copyBtn{
+  background:#5b6770;
+  display:none;
+}
+
+.clearBtn{
+  background:#8b959c;
 }
 
 .note{
-  font-size:12px;
-  color:#666;
+  font-size:11px;
   margin-top:8px;
+  color:#555;
+  line-height:1.5;
 }
 
 footer{
   text-align:center;
-  font-size:11px;
+  font-size:10px;
   color:#666;
-  padding:15px 10px 30px;
+  padding:20px 10px 30px;
+}
+
+hr{
+  border:0;
+  border-top:1px solid #eee;
+  margin:14px 0;
 }
 </style>
 </head>
@@ -110,10 +143,8 @@ footer{
 
 <main>
 
-<!-- ① 2点間距離 -->
-
+<!-- ① -->
 <div class="card">
-
 <h2>① 2点間距離</h2>
 
 <label>A点 X</label>
@@ -128,21 +159,20 @@ footer{
 <label>B点 Y</label>
 <input id="d_by" type="number" step="any">
 
-<button onclick="calcDistance()">
-距離を計算
-</button>
+<button onclick="calcDistance()">距離を計算</button>
 
-<div id="d_result" class="result">
-結果がここに表示されます
+<div class="result" id="d_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="d_copy"
+onclick="copyResult('d_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 </div>
 
-</div>
 
-
-<!-- ② A→B方向 延長座標 -->
-
+<!-- ② -->
 <div class="card">
-
 <h2>② A→B方向 延長座標</h2>
 
 <label>A点 X</label>
@@ -160,21 +190,20 @@ footer{
 <label>B点から先へ延長する距離 (m)</label>
 <input id="e_len" type="number" step="any" value="0.200">
 
-<button onclick="calcExtend()">
-新点Cを計算
-</button>
+<button onclick="calcExtension()">新点Cを計算</button>
 
-<div id="e_result" class="result">
-結果がここに表示されます
+<div class="result" id="e_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="e_copy"
+onclick="copyResult('e_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 </div>
 
-</div>
 
-
-<!-- ③ 円弧半径 -->
-
+<!-- ③ -->
 <div class="card">
-
 <h2>③ 円弧半径</h2>
 
 <label>弦長 L (m)</label>
@@ -183,21 +212,20 @@ footer{
 <label>矢高 h (m)</label>
 <input id="r_h" type="number" step="any">
 
-<button onclick="calcRadius()">
-半径を計算
-</button>
+<button onclick="calcRadius()">半径を計算</button>
 
-<div id="r_result" class="result">
-結果がここに表示されます
+<div class="result" id="r_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="r_copy"
+onclick="copyResult('r_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 </div>
 
-</div>
 
-
-<!-- ④ 法面計算 -->
-
+<!-- ④ -->
 <div class="card">
-
 <h2>④ 法面 1：n 計算</h2>
 
 <label>高さ H (m)</label>
@@ -206,63 +234,196 @@ footer{
 <label>勾配 n（水平）</label>
 <input id="s_n" type="number" step="any" value="0.5">
 
-<button onclick="calcSlope()">
-計算
-</button>
+<button onclick="calcSlope()">計算</button>
 
-<div id="s_result" class="result">
-結果がここに表示されます
+<div class="result" id="s_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="s_copy"
+onclick="copyResult('s_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 </div>
 
-</div>
 
-
-<!-- ⑤ 法勾配 座標計算 -->
-
+<!-- ⑤ -->
 <div class="card">
-
 <h2>⑤ 法勾配の座標計算</h2>
 
 <label>基準点 X</label>
-<input id="c_x1" type="number" step="any">
+<input id="p_x" type="number" step="any">
 
 <label>基準点 Y</label>
-<input id="c_y1" type="number" step="any">
+<input id="p_y" type="number" step="any">
 
 <label>方向点 X</label>
-<input id="c_x2" type="number" step="any">
+<input id="p_dx" type="number" step="any">
 
 <label>方向点 Y</label>
-<input id="c_y2" type="number" step="any">
+<input id="p_dy" type="number" step="any">
 
 <label>高さ H (m)</label>
-<input id="c_h" type="number" step="any">
+<input id="p_h" type="number" step="any">
 
 <label>法勾配 1：n</label>
-<input id="c_n" type="number" step="any" value="0.5">
+<input id="p_n" type="number" step="any" value="0.5">
 
 <label>方向</label>
-
-<select id="c_side">
+<select id="p_side">
 <option value="right">右側</option>
 <option value="left">左側</option>
 </select>
 
-<button onclick="calcSlopeCoordinate()">
-座標を計算
-</button>
+<button onclick="calcSlopePoint()">座標を計算</button>
 
-<div id="c_result" class="result">
-結果がここに表示されます
-</div>
+<div class="result" id="p_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="p_copy"
+onclick="copyResult('p_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 
 <div class="note">
 基準点から方向点を見た方向を基準に、右側・左側を選択します。
 </div>
+</div>
 
+
+<!-- ⑥ -->
+<div class="card">
+<h2>⑥ 高さ → 水平距離</h2>
+
+<label>高さ H (m)</label>
+<input id="h_h" type="number" step="any">
+
+<label>法勾配 1：n</label>
+<input id="h_n" type="number" step="any" value="0.5">
+
+<button onclick="calcHorizontal()">水平距離を計算</button>
+
+<div class="result" id="h_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="h_copy"
+onclick="copyResult('h_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
+</div>
+
+
+<!-- ⑦ -->
+<div class="card">
+<h2>⑦ 肩 → 尻 法面座標</h2>
+
+<label>肩 X</label>
+<input id="k_x" type="number" step="any">
+
+<label>肩 Y</label>
+<input id="k_y" type="number" step="any">
+
+<label>方向点 X</label>
+<input id="k_dx" type="number" step="any">
+
+<label>方向点 Y</label>
+<input id="k_dy" type="number" step="any">
+
+<label>高さ H (m)</label>
+<input id="k_h" type="number" step="any">
+
+<label>法勾配 1：n</label>
+<input id="k_n" type="number" step="any" value="0.5">
+
+<label>尻の方向</label>
+<select id="k_side">
+<option value="right">右側</option>
+<option value="left">左側</option>
+</select>
+
+<button onclick="calcToe()">尻座標を計算</button>
+
+<div class="result" id="k_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="k_copy"
+onclick="copyResult('k_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
+</div>
+
+
+<!-- ⑧ -->
+<div class="card">
+<h2>⑧ 2点から距離・方向角</h2>
+
+<label>A点 X</label>
+<input id="a_ax" type="number" step="any">
+
+<label>A点 Y</label>
+<input id="a_ay" type="number" step="any">
+
+<label>B点 X</label>
+<input id="a_bx" type="number" step="any">
+
+<label>B点 Y</label>
+<input id="a_by" type="number" step="any">
+
+<button onclick="calcAzimuth()">距離・方向角を計算</button>
+
+<div class="result" id="a_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="a_copy"
+onclick="copyResult('a_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
+
+<div class="note">
+方向角はX軸正方向を0°として時計回りに表示します。
+</div>
+</div>
+
+
+<!-- ⑨ -->
+<div class="card">
+<h2>⑨ 座標オフセット計算</h2>
+
+<label>基準点 X</label>
+<input id="o_x" type="number" step="any">
+
+<label>基準点 Y</label>
+<input id="o_y" type="number" step="any">
+
+<label>方向点 X</label>
+<input id="o_dx" type="number" step="any">
+
+<label>方向点 Y</label>
+<input id="o_dy" type="number" step="any">
+
+<label>前後距離 (m)</label>
+<input id="o_forward" type="number" step="any" value="0">
+
+<label>左右距離 (m)</label>
+<input id="o_side" type="number" step="any" value="0">
+
+<div class="note">
+前後距離：＋で前方、－で後方<br>
+左右距離：＋で右側、－で左側
+</div>
+
+<button onclick="calcOffset()">新点座標を計算</button>
+
+<div class="result" id="o_result">結果がここに表示されます</div>
+
+<button class="copyBtn" id="o_copy"
+onclick="copyResult('o_result')">結果をコピー</button>
+
+<button class="clearBtn"
+onclick="clearCard(this)">入力をクリア</button>
 </div>
 
 </main>
+
 
 <footer>
 広川護岸（17工区）工事<br>
@@ -272,20 +433,114 @@ footer{
 
 <script>
 
-/* 数値取得 */
+/* =========================
+   共通
+========================= */
 
 function num(id){
-  return parseFloat(document.getElementById(id).value);
+  const v = document.getElementById(id).value;
+
+  if(v === ""){
+    return NaN;
+  }
+
+  return parseFloat(v);
 }
 
-function validNumbers(values){
-  return values.every(function(v){
-    return Number.isFinite(v);
+
+function showResult(id,text){
+
+  document.getElementById(id).textContent = text;
+
+  const copy =
+    document.getElementById(
+      id.replace("_result","_copy")
+    );
+
+  if(copy){
+    copy.style.display="block";
+  }
+}
+
+
+function validNumbers(arr){
+
+  return arr.every(v =>
+    Number.isFinite(v)
+  );
+}
+
+
+function copyResult(id){
+
+  const text =
+    document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text)
+  .then(()=>{
+    alert("計算結果をコピーしました");
+  })
+  .catch(()=>{
+    alert("コピーできませんでした");
   });
 }
 
 
-/* ① 2点間距離 */
+function clearCard(button){
+
+  const card =
+    button.closest(".card");
+
+  card.querySelectorAll("input")
+      .forEach(input=>{
+
+        if(
+          input.id.endsWith("_n")
+        ){
+          input.value="0.5";
+        }
+        else if(
+          input.id==="e_len"
+        ){
+          input.value="0.200";
+        }
+        else if(
+          input.id==="o_forward" ||
+          input.id==="o_side"
+        ){
+          input.value="0";
+        }
+        else{
+          input.value="";
+        }
+
+      });
+
+  card.querySelectorAll("select")
+      .forEach(select=>{
+        select.selectedIndex=0;
+      });
+
+  const result =
+    card.querySelector(".result");
+
+  if(result){
+    result.textContent=
+      "結果がここに表示されます";
+  }
+
+  const copy =
+    card.querySelector(".copyBtn");
+
+  if(copy){
+    copy.style.display="none";
+  }
+}
+
+
+/* =========================
+   ① 2点間距離
+========================= */
 
 function calcDistance(){
 
@@ -295,26 +550,27 @@ function calcDistance(){
   const by=num("d_by");
 
   if(!validNumbers([ax,ay,bx,by])){
-    document.getElementById("d_result").innerHTML=
-    "数値を入力してください";
+    alert("座標を入力してください");
     return;
   }
 
   const dx=bx-ax;
   const dy=by-ay;
 
-  const distance=Math.hypot(dx,dy);
+  const d=Math.hypot(dx,dy);
 
-  document.getElementById("d_result").innerHTML=
-  "<strong>距離 = " +
-  distance.toFixed(3) +
-  " m</strong>";
+  showResult(
+    "d_result",
+    "距離 = " + d.toFixed(3) + " m"
+  );
 }
 
 
-/* ② A→B方向 延長座標 */
+/* =========================
+   ② A→B方向 延長座標
+========================= */
 
-function calcExtend(){
+function calcExtension(){
 
   const ax=num("e_ax");
   const ay=num("e_ay");
@@ -323,33 +579,39 @@ function calcExtend(){
   const len=num("e_len");
 
   if(!validNumbers([ax,ay,bx,by,len])){
-    document.getElementById("e_result").innerHTML=
-    "数値を入力してください";
+    alert("数値を入力してください");
     return;
   }
 
   const dx=bx-ax;
   const dy=by-ay;
 
-  const distance=Math.hypot(dx,dy);
+  const d=Math.hypot(dx,dy);
 
-  if(distance===0){
-    document.getElementById("e_result").innerHTML=
-    "A点とB点を別の座標にしてください";
+  if(d===0){
+    alert("A点とB点を別の座標にしてください");
     return;
   }
 
-  const cx=bx+(dx/distance)*len;
-  const cy=by+(dy/distance)*len;
+  const ux=dx/d;
+  const uy=dy/d;
 
-  document.getElementById("e_result").innerHTML=
-  "<strong>新点 C</strong><br>" +
-  "X = <strong>" + cx.toFixed(3) + "</strong><br>" +
-  "Y = <strong>" + cy.toFixed(3) + "</strong>";
+  const cx=bx+ux*len;
+  const cy=by+uy*len;
+
+  showResult(
+    "e_result",
+    "新点 C\n" +
+    "X = " + cx.toFixed(3) + "\n" +
+    "Y = " + cy.toFixed(3) + "\n" +
+    "延長距離 = " + len.toFixed(3) + " m"
+  );
 }
 
 
-/* ③ 円弧半径 */
+/* =========================
+   ③ 円弧半径
+========================= */
 
 function calcRadius(){
 
@@ -357,21 +619,25 @@ function calcRadius(){
   const h=num("r_h");
 
   if(!validNumbers([L,h]) || L<=0 || h<=0){
-    document.getElementById("r_result").innerHTML=
-    "弦長と矢高を正しく入力してください";
+    alert("弦長と矢高を正しく入力してください");
     return;
   }
 
-  const R=(L*L)/(8*h)+(h/2);
+  const R=
+    (L*L)/(8*h)+h/2;
 
-  document.getElementById("r_result").innerHTML=
-  "<strong>半径 R = " +
-  R.toFixed(3) +
-  " m</strong>";
+  showResult(
+    "r_result",
+    "半径 R = " +
+    R.toFixed(3) +
+    " m"
+  );
 }
 
 
-/* ④ 法面計算 */
+/* =========================
+   ④ 法面 1:n
+========================= */
 
 function calcSlope(){
 
@@ -379,84 +645,71 @@ function calcSlope(){
   const n=num("s_n");
 
   if(!validNumbers([H,n]) || H<0 || n<0){
-    document.getElementById("s_result").innerHTML=
-    "高さと勾配を正しく入力してください";
+    alert("高さと勾配を正しく入力してください");
     return;
   }
 
   const horizontal=H*n;
 
-  const slopeLength=Math.hypot(H,horizontal);
+  const slopeLength=
+    Math.hypot(H,horizontal);
 
-  document.getElementById("s_result").innerHTML=
-  "水平距離 = <strong>" +
-  horizontal.toFixed(3) +
-  " m</strong><br>" +
+  const angle=
+    Math.atan2(H,horizontal)
+    *180/Math.PI;
 
-  "法長 = <strong>" +
-  slopeLength.toFixed(3) +
-  " m</strong>";
+  showResult(
+    "s_result",
+    "水平距離 = " +
+    horizontal.toFixed(3) +
+    " m\n" +
+
+    "法長 = " +
+    slopeLength.toFixed(3) +
+    " m\n" +
+
+    "法面角度 = " +
+    angle.toFixed(3) +
+    "°"
+  );
 }
 
 
-/* ⑤ 法勾配 座標計算 */
+/* =========================
+   ⑤ 法勾配 座標
+========================= */
 
-function calcSlopeCoordinate(){
+function calcSlopePoint(){
 
-  const x1=num("c_x1");
-  const y1=num("c_y1");
-
-  const x2=num("c_x2");
-  const y2=num("c_y2");
-
-  const H=num("c_h");
-  const n=num("c_n");
+  const x=num("p_x");
+  const y=num("p_y");
+  const dxp=num("p_dx");
+  const dyp=num("p_dy");
+  const H=num("p_h");
+  const n=num("p_n");
 
   const side=
-  document.getElementById("c_side").value;
+    document.getElementById("p_side").value;
 
-  if(!validNumbers([x1,y1,x2,y2,H,n])){
-
-    document.getElementById("c_result").innerHTML=
-    "数値を入力してください";
-
+  if(!validNumbers([x,y,dxp,dyp,H,n])){
+    alert("数値を入力してください");
     return;
   }
 
-  if(H<0 || n<0){
+  const dx=dxp-x;
+  const dy=dyp-y;
 
-    document.getElementById("c_result").innerHTML=
-    "高さと法勾配を正しく入力してください";
+  const d=Math.hypot(dx,dy);
 
+  if(d===0){
+    alert("基準点と方向点を別の座標にしてください");
     return;
   }
-
-  const dx=x2-x1;
-  const dy=y2-y1;
-
-  const distance=Math.hypot(dx,dy);
-
-  if(distance===0){
-
-    document.getElementById("c_result").innerHTML=
-    "基準点と方向点を別の座標にしてください";
-
-    return;
-  }
-
-
-  /* 水平距離 H × n */
 
   const horizontal=H*n;
 
-
-  /* 基準点→方向点の単位ベクトル */
-
-  const ux=dx/distance;
-  const uy=dy/distance;
-
-
-  /* 直角方向 */
+  const ux=dx/d;
+  const uy=dy/d;
 
   let px;
   let py;
@@ -473,43 +726,251 @@ function calcSlopeCoordinate(){
 
   }
 
+  const nx=x+px*horizontal;
+  const ny=y+py*horizontal;
 
-  /* 新点座標 */
+  showResult(
+    "p_result",
+    "新点座標\n" +
+    "X = " + nx.toFixed(3) + "\n" +
+    "Y = " + ny.toFixed(3) + "\n" +
+    "水平距離 = " +
+    horizontal.toFixed(3) +
+    " m"
+  );
+}
 
-  const newX=
-  x1 + px*horizontal;
 
-  const newY=
-  y1 + py*horizontal;
+/* =========================
+   ⑥ 高さ → 水平距離
+========================= */
 
+function calcHorizontal(){
 
-  /* 法長 */
+  const H=num("h_h");
+  const n=num("h_n");
+
+  if(!validNumbers([H,n]) || H<0 || n<0){
+    alert("高さと勾配を正しく入力してください");
+    return;
+  }
+
+  const horizontal=H*n;
 
   const slopeLength=
-  Math.hypot(H,horizontal);
+    Math.hypot(H,horizontal);
+
+  showResult(
+    "h_result",
+    "水平距離 = " +
+    horizontal.toFixed(3) +
+    " m\n" +
+
+    "法長 = " +
+    slopeLength.toFixed(3) +
+    " m"
+  );
+}
 
 
-  document.getElementById("c_result").innerHTML=
+/* =========================
+   ⑦ 肩 → 尻
+========================= */
 
-  "<strong>計算結果</strong><br>" +
+function calcToe(){
 
-  "水平距離 = <strong>" +
-  horizontal.toFixed(3) +
-  " m</strong><br>" +
+  const x=num("k_x");
+  const y=num("k_y");
 
-  "法長 = <strong>" +
-  slopeLength.toFixed(3) +
-  " m</strong><br><br>" +
+  const dxp=num("k_dx");
+  const dyp=num("k_dy");
 
-  "<strong>新点座標</strong><br>" +
+  const H=num("k_h");
+  const n=num("k_n");
 
-  "X = <strong>" +
-  newX.toFixed(3) +
-  "</strong><br>" +
+  const side=
+    document.getElementById("k_side").value;
 
-  "Y = <strong>" +
-  newY.toFixed(3) +
-  "</strong>";
+  if(!validNumbers([x,y,dxp,dyp,H,n])){
+    alert("数値を入力してください");
+    return;
+  }
+
+  const dx=dxp-x;
+  const dy=dyp-y;
+
+  const d=Math.hypot(dx,dy);
+
+  if(d===0){
+    alert("肩と方向点を別の座標にしてください");
+    return;
+  }
+
+  const horizontal=H*n;
+
+  const ux=dx/d;
+  const uy=dy/d;
+
+  let px;
+  let py;
+
+  if(side==="right"){
+
+    px=uy;
+    py=-ux;
+
+  }else{
+
+    px=-uy;
+    py=ux;
+
+  }
+
+  const tx=x+px*horizontal;
+  const ty=y+py*horizontal;
+
+  showResult(
+    "k_result",
+    "尻座標\n" +
+    "X = " + tx.toFixed(3) + "\n" +
+    "Y = " + ty.toFixed(3) + "\n" +
+    "肩→尻 水平距離 = " +
+    horizontal.toFixed(3) +
+    " m"
+  );
+}
+
+
+/* =========================
+   ⑧ 距離・方向角
+========================= */
+
+function calcAzimuth(){
+
+  const ax=num("a_ax");
+  const ay=num("a_ay");
+
+  const bx=num("a_bx");
+  const by=num("a_by");
+
+  if(!validNumbers([ax,ay,bx,by])){
+    alert("座標を入力してください");
+    return;
+  }
+
+  const dx=bx-ax;
+  const dy=by-ay;
+
+  const distance=
+    Math.hypot(dx,dy);
+
+  if(distance===0){
+    alert("A点とB点を別の座標にしてください");
+    return;
+  }
+
+  /*
+  測量座標：
+  X = 北方向
+  Y = 東方向
+
+  方向角：
+  北(X+) = 0°
+  東(Y+) = 90°
+  */
+
+  let angle=
+    Math.atan2(dy,dx)
+    *180/Math.PI;
+
+  if(angle<0){
+    angle+=360;
+  }
+
+  showResult(
+    "a_result",
+    "距離 = " +
+    distance.toFixed(3) +
+    " m\n" +
+
+    "方向角 = " +
+    angle.toFixed(4) +
+    "°"
+  );
+}
+
+
+/* =========================
+   ⑨ 座標オフセット
+========================= */
+
+function calcOffset(){
+
+  const x=num("o_x");
+  const y=num("o_y");
+
+  const dxp=num("o_dx");
+  const dyp=num("o_dy");
+
+  const forward=num("o_forward");
+  const side=num("o_side");
+
+  if(!validNumbers([
+    x,y,dxp,dyp,
+    forward,side
+  ])){
+    alert("数値を入力してください");
+    return;
+  }
+
+  const dx=dxp-x;
+  const dy=dyp-y;
+
+  const d=Math.hypot(dx,dy);
+
+  if(d===0){
+    alert("基準点と方向点を別の座標にしてください");
+    return;
+  }
+
+  const ux=dx/d;
+  const uy=dy/d;
+
+  /*
+  右直角方向
+  */
+  const rx=uy;
+  const ry=-ux;
+
+  const nx=
+    x +
+    ux*forward +
+    rx*side;
+
+  const ny=
+    y +
+    uy*forward +
+    ry*side;
+
+  showResult(
+    "o_result",
+    "新点座標\n" +
+    "X = " +
+    nx.toFixed(3) +
+    "\n" +
+
+    "Y = " +
+    ny.toFixed(3) +
+    "\n" +
+
+    "前後 = " +
+    forward.toFixed(3) +
+    " m\n" +
+
+    "左右 = " +
+    side.toFixed(3) +
+    " m"
+  );
 }
 
 </script>
