@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>広川護岸 現場計算</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  margin:0;
+  background:#f2f4f7;
+  color:#222;
+}
+
+header{
+  background:#1769aa;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+}
+
+header p{
+  margin:5px 0 0;
+  font-size:13px;
+}
+
+main{
+  max-width:600px;
+  margin:auto;
+  padding:12px;
+}
+
+.card{
+  background:white;
+  margin-bottom:14px;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h2{
+  margin-top:0;
+  font-size:18px;
+  color:#1769aa;
+}
+
+label{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px;
+  margin-top:4px;
+  border:1px solid #bbb;
+  border-radius:8px;
+  font-size:17px;
+}
+
+button{
+  width:100%;
+  margin-top:14px;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:#1769aa;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.result{
+  margin-top:12px;
+  padding:12px;
+  background:#eaf4ff;
+  border-radius:8px;
+  font-size:16px;
+  line-height:1.7;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:#777;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>広川護岸 現場計算</h1>
+<p>測量・施工管理 計算ツール</p>
+</header>
+
+<main>
+
+<!-- 2点間距離 -->
+<div class="card">
+<h2>① 2点間距離</h2>
+
+<label>A点 X</label>
+<input id="ax" type="number" step="any">
+
+<label>A点 Y</label>
+<input id="ay" type="number" step="any">
+
+<label>B点 X</label>
+<input id="bx" type="number" step="any">
+
+<label>B点 Y</label>
+<input id="by" type="number" step="any">
+
+<button onclick="distance()">距離を計算</button>
+
+<div id="distanceResult" class="result">
+結果がここに表示されます
+</div>
+</div>
+
+
+<!-- 延長座標 -->
+<div class="card">
+<h2>② A→B方向 延長座標</h2>
+
+<label>A点 X</label>
+<input id="eax" type="number" step="any">
+
+<label>A点 Y</label>
+<input id="eay" type="number" step="any">
+
+<label>B点 X</label>
+<input id="ebx" type="number" step="any">
+
+<label>B点 Y</label>
+<input id="eby" type="number" step="any">
+
+<label>B点から先へ延長する距離 (m)</label>
+<input id="extension" type="number" step="any" value="0.200">
+
+<button onclick="extendPoint()">新点Cを計算</button>
+
+<div id="extendResult" class="result">
+結果がここに表示されます
+</div>
+</div>
+
+
+<!-- 円弧半径 -->
+<div class="card">
+<h2>③ 円弧半径</h2>
+
+<label>弦長 L (m)</label>
+<input id="chord" type="number" step="any">
+
+<label>矢高 h (m)</label>
+<input id="sagitta" type="number" step="any">
+
+<button onclick="radius()">半径を計算</button>
+
+<div id="radiusResult" class="result">
+結果がここに表示されます
+</div>
+</div>
+
+
+<!-- 法面 -->
+<div class="card">
+<h2>④ 法面 1：0.5 計算</h2>
+
+<label>高さ H (m)</label>
+<input id="height" type="number" step="any">
+
+<label>勾配（水平）</label>
+<input id="slope" type="number" step="any" value="0.5">
+
+<button onclick="slopeCalc()">計算</button>
+
+<div id="slopeResult" class="result">
+結果がここに表示されます
+</div>
+</div>
+
+</main>
+
+<footer>
+広川護岸（17工区）工事<br>
+現場計算ツール
+</footer>
+
+
+<script>
+
+function n(id){
+  return parseFloat(document.getElementById(id).value);
+}
+
+function distance(){
+
+  const ax=n("ax");
+  const ay=n("ay");
+  const bx=n("bx");
+  const by=n("by");
+
+  if([ax,ay,bx,by].some(Number.isNaN)){
+    alert("座標を入力してください");
+    return;
+  }
+
+  const d=Math.hypot(bx-ax,by-ay);
+
+  document.getElementById("distanceResult").innerHTML=
+  "<b>2点間距離</b><br>"+d.toFixed(3)+" m";
+}
+
+
+function extendPoint(){
+
+  const ax=n("eax");
+  const ay=n("eay");
+  const bx=n("ebx");
+  const by=n("eby");
+  const ext=n("extension");
+
+  if([ax,ay,bx,by,ext].some(Number.isNaN)){
+    alert("数値を入力してください");
+    return;
+  }
+
+  const dx=bx-ax;
+  const dy=by-ay;
+  const d=Math.hypot(dx,dy);
+
+  if(d===0){
+    alert("A点とB点が同じです");
+    return;
+  }
+
+  const cx=bx+(dx/d)*ext;
+  const cy=by+(dy/d)*ext;
+
+  document.getElementById("extendResult").innerHTML=
+  "<b>新点 C</b><br>"+
+  "X = "+cx.toFixed(3)+"<br>"+
+  "Y = "+cy.toFixed(3);
+}
+
+
+function radius(){
+
+  const L=n("chord");
+  const h=n("sagitta");
+
+  if(Number.isNaN(L)||Number.isNaN(h)||h<=0){
+    alert("弦長と矢高を入力してください");
+    return;
+  }
+
+  const R=(L*L)/(8*h)+(h/2);
+
+  document.getElementById("radiusResult").innerHTML=
+  "<b>円弧半径 R</b><br>"+
+  R.toFixed(3)+" m";
+}
+
+
+function slopeCalc(){
+
+  const H=n("height");
+  const slope=n("slope");
+
+  if(Number.isNaN(H)||Number.isNaN(slope)){
+    alert("数値を入力してください");
+    return;
+  }
+
+  const horizontal=H*slope;
+  const diagonal=Math.hypot(H,horizontal);
+
+  document.getElementById("slopeResult").innerHTML=
+  "<b>水平距離</b><br>"+
+  horizontal.toFixed(3)+" m<br>"+
+  "<b>法長</b><br>"+
+  diagonal.toFixed(3)+" m";
+}
+
+</script>
+
+</body>
+</html>
