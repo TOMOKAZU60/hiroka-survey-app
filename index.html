@@ -13,6 +13,10 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <style>
 
+/* =========================
+   基本
+========================= */
+
 *{
   box-sizing:border-box;
 }
@@ -43,11 +47,13 @@ select{
 header{
   background:linear-gradient(180deg,#1689dc,#0874c4);
   color:white;
+
   padding:
-    calc(14px + env(safe-area-inset-top))
-    20px
-    17px;
-  box-shadow:0 2px 6px rgba(0,0,0,.12);
+  calc(14px + env(safe-area-inset-top))
+  20px
+  17px;
+
+  box-shadow:0 3px 8px rgba(0,0,0,.22);
 }
 
 .header-row{
@@ -70,12 +76,11 @@ header h1{
   width:auto;
   padding:0;
   margin:0;
-  cursor:pointer;
 }
 
 .subtitle{
-  margin-top:8px;
-  font-size:14px;
+  margin-top:7px;
+  font-size:13px;
 }
 
 
@@ -84,141 +89,223 @@ header h1{
 ========================= */
 
 .hero{
-  background:linear-gradient(135deg,#238fc8,#75c2dc);
-  min-height:210px;
+  background:#dbe5ec;
+  min-height:200px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   overflow:hidden;
 }
 
 .hero img{
   width:100%;
   height:auto;
-  max-height:310px;
+  max-height:300px;
   object-fit:cover;
   display:block;
 }
 
 
 /* =========================
-   HOMEメニュー
+   HOME メニュー
 ========================= */
 
 .home-menu{
   max-width:700px;
   margin:auto;
+
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
-  padding:10px;
+
+  gap:14px;
+
+  padding:
+  15px
+  11px
+  25px;
 }
+
+
+/* =========================
+   立体ボタン
+========================= */
 
 .menu-card{
+  position:relative;
+
   border:none;
-  min-height:130px;
-  border-radius:12px;
+
+  min-height:126px;
+
+  border-radius:17px;
+
   color:white;
+
   text-align:left;
-  padding:18px 15px;
+
+  padding:17px 13px;
+
   display:flex;
   align-items:center;
-  gap:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,.18);
+
+  gap:11px;
+
   cursor:pointer;
+
+  /* 立体感 */
+  box-shadow:
+    0 7px 0 rgba(0,0,0,.28),
+    0 11px 17px rgba(0,0,0,.18),
+    inset 0 2px 1px rgba(255,255,255,.38),
+    inset 0 -2px 2px rgba(0,0,0,.10);
+
+  transition:
+    transform .08s ease,
+    box-shadow .08s ease;
+
+  -webkit-tap-highlight-color:transparent;
 }
+
+
+/* 上側の光沢 */
+
+.menu-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:2px;
+  left:10px;
+  right:10px;
+
+  height:42%;
+
+  border-radius:14px 14px 25px 25px;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.20),
+    rgba(255,255,255,0)
+  );
+
+  pointer-events:none;
+}
+
+
+/* 押した時に沈む */
 
 .menu-card:active{
-  transform:scale(.97);
-  opacity:.85;
+  transform:translateY(6px);
+
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.28),
+    0 4px 7px rgba(0,0,0,.16),
+    inset 0 2px 1px rgba(255,255,255,.25);
 }
 
+
 .menu-icon{
-  font-size:38px;
-  min-width:45px;
+  position:relative;
+  z-index:2;
+
+  font-size:36px;
+
+  min-width:41px;
+
   text-align:center;
+
+  filter:
+  drop-shadow(
+    0 2px 1px rgba(0,0,0,.18)
+  );
+}
+
+.menu-text{
+  position:relative;
+  z-index:2;
 }
 
 .menu-title{
-  font-size:20px;
+  font-size:18px;
   font-weight:800;
   margin-bottom:5px;
+
+  text-shadow:
+  0 1px 2px rgba(0,0,0,.22);
 }
 
 .menu-description{
-  font-size:13px;
-  line-height:1.5;
+  font-size:12px;
+  line-height:1.45;
 }
 
+
+/* =========================
+   ボタン色
+========================= */
+
 .blue{
-  background:linear-gradient(135deg,#168ff0,#0878d5);
+  background:
+  linear-gradient(145deg,#34a4ff,#0874cf);
 }
 
 .green{
-  background:linear-gradient(135deg,#16b86a,#08a84e);
+  background:
+  linear-gradient(145deg,#2bd57c,#079b49);
 }
 
 .orange{
-  background:linear-gradient(135deg,#ff7927,#ff5c0a);
+  background:
+  linear-gradient(145deg,#ff963b,#ef5809);
 }
 
 .purple{
-  background:linear-gradient(135deg,#a743e0,#7d29cf);
+  background:
+  linear-gradient(145deg,#bd61ec,#7826c1);
 }
 
 .red{
-  background:linear-gradient(135deg,#ed4557,#d7283b);
+  background:
+  linear-gradient(145deg,#ff6271,#cf283b);
 }
 
 .cyan{
-  background:linear-gradient(135deg,#20b6c1,#1596ae);
+  background:
+  linear-gradient(145deg,#3dcbd2,#128da1);
 }
 
 .gray{
-  background:linear-gradient(135deg,#74808b,#56616c);
+  background:
+  linear-gradient(145deg,#929da7,#56616c);
 }
 
 .yellow{
-  background:linear-gradient(135deg,#f7b817,#e79a00);
+  background:
+  linear-gradient(145deg,#ffc83d,#e69500);
+}
+
+
+/* 基準点ナビ */
+
+.navy{
+  background:
+  linear-gradient(145deg,#468ee8,#174d9f);
+}
+
+
+/* SiteBox */
+
+.sitebox{
+  background:
+  linear-gradient(145deg,#39c9b9,#08776f);
 }
 
 
 /* =========================
-   Dropbox専用ボタン
-========================= */
-
-.dropbox-area{
-  grid-column:1 / -1;
-  padding:5px 0 8px;
-}
-
-.dropbox-open-button{
-  width:100%;
-  border:none;
-  border-radius:12px;
-  padding:16px 10px;
-  background:#0061ff;
-  color:white;
-  font-size:19px;
-  font-weight:bold;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-}
-
-.dropbox-open-button:active{
-  opacity:.8;
-  transform:scale(.98);
-}
-
-.dropbox-text{
-  text-align:center;
-  color:#666;
-  font-size:12px;
-  margin-top:7px;
-}
-
-
-/* =========================
-   各ページ
+   ページ
 ========================= */
 
 .page{
@@ -231,25 +318,49 @@ header h1{
 
 .page-header{
   background:white;
+
   position:sticky;
   top:0;
   z-index:20;
+
   padding:11px 12px;
+
   display:flex;
   align-items:center;
+
   border-bottom:1px solid #ddd;
+
+  box-shadow:
+  0 2px 5px rgba(0,0,0,.08);
 }
 
 .back-button{
   width:auto;
+
   margin:0 12px 0 0;
-  padding:7px 12px;
-  background:#1684d5;
+
+  padding:8px 12px;
+
+  background:
+  linear-gradient(180deg,#2c9aed,#0874c4);
+
   color:white;
+
   border:none;
+
   border-radius:8px;
+
   font-size:15px;
   font-weight:bold;
+
+  box-shadow:
+  0 3px 0 #075b98,
+  0 4px 7px rgba(0,0,0,.15);
+}
+
+.back-button:active{
+  transform:translateY(2px);
+  box-shadow:0 1px 0 #075b98;
 }
 
 .page-header h2{
@@ -260,7 +371,7 @@ header h1{
 
 
 /* =========================
-   計算カード
+   計算
 ========================= */
 
 .calculation-area{
@@ -271,10 +382,15 @@ header h1{
 
 .calc-card{
   background:white;
+
   margin-bottom:12px;
+
   padding:15px;
+
   border-radius:13px;
-  box-shadow:0 2px 8px rgba(0,0,0,.09);
+
+  box-shadow:
+  0 3px 9px rgba(0,0,0,.10);
 }
 
 .calc-card h3{
@@ -294,48 +410,81 @@ input,
 select{
   width:100%;
   height:42px;
+
   border:1px solid #bbb;
   border-radius:7px;
+
   padding:7px 9px;
+
   font-size:16px;
+
   background:white;
 }
 
 .calc-button{
   width:100%;
+
   margin-top:11px;
-  padding:11px;
+
+  padding:12px;
+
   border:none;
-  border-radius:8px;
-  background:#1769aa;
+
+  border-radius:9px;
+
+  background:
+  linear-gradient(180deg,#2998ea,#0874c4);
+
   color:white;
+
   font-size:16px;
   font-weight:bold;
+
+  box-shadow:
+  0 4px 0 #075b98,
+  0 6px 8px rgba(0,0,0,.16);
+}
+
+.calc-button:active{
+  transform:translateY(3px);
+  box-shadow:0 1px 0 #075b98;
 }
 
 .result{
-  margin-top:9px;
+  margin-top:11px;
+
   min-height:39px;
+
   padding:9px;
+
   background:#eef6ff;
+
   border-radius:7px;
+
   font-weight:bold;
   line-height:1.6;
 }
 
 
 /* =========================
-   各機能ページ
+   準備中
 ========================= */
 
 .coming{
   max-width:600px;
-  margin:20px auto;
+
+  margin:20px 10px;
+
   padding:25px 18px;
+
   background:white;
+
   border-radius:14px;
+
   text-align:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+  box-shadow:
+  0 3px 10px rgba(0,0,0,.10);
 }
 
 .coming-icon{
@@ -354,19 +503,31 @@ select{
 
 
 /* =========================
-   下部メニュー
+   下部ナビ
 ========================= */
 
 .bottom-nav{
   position:fixed;
+
   left:0;
   right:0;
   bottom:0;
+
   z-index:100;
-  height:calc(72px + env(safe-area-inset-bottom));
-  padding-bottom:env(safe-area-inset-bottom);
+
+  height:
+  calc(72px + env(safe-area-inset-bottom));
+
+  padding-bottom:
+  env(safe-area-inset-bottom);
+
   background:white;
-  border-top:1px solid #ddd;
+
+  border-top:1px solid #ccc;
+
+  box-shadow:
+  0 -2px 8px rgba(0,0,0,.10);
+
   display:grid;
   grid-template-columns:repeat(5,1fr);
 }
@@ -374,12 +535,17 @@ select{
 .nav-button{
   border:0;
   background:white;
+
   color:#444;
+
   font-size:11px;
+
   display:flex;
   flex-direction:column;
+
   align-items:center;
   justify-content:center;
+
   padding:4px 1px;
 }
 
@@ -401,32 +567,37 @@ select{
 @media(max-width:420px){
 
   header h1{
-    font-size:23px;
+    font-size:22px;
+  }
+
+  .home-menu{
+    gap:13px 10px;
   }
 
   .menu-card{
-    min-height:125px;
-    padding:15px 11px;
-    gap:10px;
+    min-height:120px;
+    padding:14px 10px;
+    gap:8px;
   }
 
   .menu-icon{
-    font-size:33px;
-    min-width:38px;
+    font-size:32px;
+    min-width:35px;
   }
 
   .menu-title{
-    font-size:18px;
+    font-size:17px;
   }
 
   .menu-description{
-    font-size:12px;
+    font-size:11px;
   }
 
 }
 
 </style>
 </head>
+
 
 <body>
 
@@ -469,12 +640,12 @@ alt="広川護岸 HOME">
 </div>
 
 
-<!-- メニュー -->
+<!-- 10個のメニュー -->
 
 <div class="home-menu">
 
 
-<!-- 測量計算 -->
+<!-- 1 測量計算 -->
 
 <button
 class="menu-card blue"
@@ -482,18 +653,23 @@ onclick="showPage('surveyPage')">
 
 <div class="menu-icon">📐</div>
 
-<div>
-<div class="menu-title">測量計算</div>
+<div class="menu-text">
+
+<div class="menu-title">
+測量計算
+</div>
+
 <div class="menu-description">
 距離・座標・延長点<br>
 円弧・勾配など
 </div>
+
 </div>
 
 </button>
 
 
-<!-- 出来形管理 -->
+<!-- 2 出来形管理 -->
 
 <button
 class="menu-card green"
@@ -501,18 +677,23 @@ onclick="showPage('qualityPage')">
 
 <div class="menu-icon">📊</div>
 
-<div>
-<div class="menu-title">出来形管理</div>
+<div class="menu-text">
+
+<div class="menu-title">
+出来形管理
+</div>
+
 <div class="menu-description">
 設計値・実測値・差<br>
 規格値確認
 </div>
+
 </div>
 
 </button>
 
 
-<!-- 写真管理 -->
+<!-- 3 写真管理 -->
 
 <button
 class="menu-card orange"
@@ -520,18 +701,23 @@ onclick="showPage('photoPage')">
 
 <div class="menu-icon">📷</div>
 
-<div>
-<div class="menu-title">写真管理</div>
+<div class="menu-text">
+
+<div class="menu-title">
+写真管理
+</div>
+
 <div class="menu-description">
 電子黒板・工種別<br>
 測点・撮影内容
 </div>
+
 </div>
 
 </button>
 
 
-<!-- 段階確認 -->
+<!-- 4 段階確認 -->
 
 <button
 class="menu-card purple"
@@ -539,18 +725,23 @@ onclick="showPage('checkPage')">
 
 <div class="menu-icon">📋</div>
 
-<div>
-<div class="menu-title">段階確認・立会</div>
+<div class="menu-text">
+
+<div class="menu-title">
+段階確認・立会
+</div>
+
 <div class="menu-description">
 確認項目・予定日<br>
 実施日・写真
 </div>
+
 </div>
 
 </button>
 
 
-<!-- 施工計画書 -->
+<!-- 5 施工計画書 -->
 
 <button
 class="menu-card red"
@@ -558,18 +749,23 @@ onclick="showPage('planPage')">
 
 <div class="menu-icon">⛑️</div>
 
-<div>
-<div class="menu-title">施工計画書</div>
+<div class="menu-text">
+
+<div class="menu-title">
+施工計画書
+</div>
+
 <div class="menu-description">
-施工・計画書作成<br>
+施工計画書<br>
 工程管理
 </div>
+
 </div>
 
 </button>
 
 
-<!-- 資料・図面 -->
+<!-- 6 資料・図面 -->
 
 <button
 class="menu-card cyan"
@@ -577,18 +773,23 @@ onclick="showPage('documentsPage')">
 
 <div class="menu-icon">🗂️</div>
 
-<div>
-<div class="menu-title">資料・図面</div>
-<div class="menu-description">
-図面・仕様書・基準<br>
-共通資料
+<div class="menu-text">
+
+<div class="menu-title">
+資料・図面
 </div>
+
+<div class="menu-description">
+図面・仕様書<br>
+基準・共通資料
+</div>
+
 </div>
 
 </button>
 
 
-<!-- 工事設定 -->
+<!-- 7 工事設定 -->
 
 <button
 class="menu-card gray"
@@ -596,18 +797,23 @@ onclick="showPage('settingsPage')">
 
 <div class="menu-icon">⚙️</div>
 
-<div>
-<div class="menu-title">工事設定</div>
+<div class="menu-text">
+
+<div class="menu-title">
+工事設定
+</div>
+
 <div class="menu-description">
 工事名・発注者<br>
 受注者・工期
 </div>
+
 </div>
 
 </button>
 
 
-<!-- その他ツール -->
+<!-- 8 その他 -->
 
 <button
 class="menu-card yellow"
@@ -615,38 +821,73 @@ onclick="showPage('otherPage')">
 
 <div class="menu-icon">🧮</div>
 
-<div>
-<div class="menu-title">その他ツール</div>
+<div class="menu-text">
+
+<div class="menu-title">
+その他ツール
+</div>
+
 <div class="menu-description">
 単価・土量・メモ<br>
-PDF・バックアップ
+便利ツール
 </div>
+
 </div>
 
 </button>
 
 
-<!-- Dropbox専用 -->
-
-<div class="dropbox-area">
+<!-- 9 基準点ナビ -->
 
 <button
-class="dropbox-open-button"
-onclick="openDropbox()">
+class="menu-card navy"
+onclick="openKijuntenNavi()">
 
-📁 Dropboxを開く
+<div class="menu-icon">📍</div>
+
+<div class="menu-text">
+
+<div class="menu-title">
+基準点ナビ
+</div>
+
+<div class="menu-description">
+基準点・座標<br>
+App Store
+</div>
+
+</div>
 
 </button>
 
-<div class="dropbox-text">
-広川護岸（17工区）工事フォルダ
+
+<!-- 10 SiteBox -->
+
+<button
+class="menu-card sitebox"
+onclick="openSiteBox()">
+
+<div class="menu-icon">📱</div>
+
+<div class="menu-text">
+
+<div class="menu-title">
+SiteBox
+</div>
+
+<div class="menu-description">
+現場写真・黒板<br>
+App Store
 </div>
 
 </div>
 
+</button>
+
 
 </div>
 </div>
+
 
 
 <!-- =========================
@@ -695,7 +936,10 @@ onclick="distanceCalc()">
 計算
 </button>
 
-<div id="distanceResult" class="result"></div>
+<div
+id="distanceResult"
+class="result">
+</div>
 
 </div>
 
@@ -727,7 +971,10 @@ onclick="extensionCalc()">
 計算
 </button>
 
-<div id="extensionResult" class="result"></div>
+<div
+id="extensionResult"
+class="result">
+</div>
 
 </div>
 
@@ -759,7 +1006,10 @@ onclick="pointFromA()">
 計算
 </button>
 
-<div id="pointAResult" class="result"></div>
+<div
+id="pointAResult"
+class="result">
+</div>
 
 </div>
 
@@ -782,7 +1032,10 @@ onclick="radiusCalc()">
 計算
 </button>
 
-<div id="radiusResult" class="result"></div>
+<div
+id="radiusResult"
+class="result">
+</div>
 
 </div>
 
@@ -808,7 +1061,10 @@ onclick="scaleCalc()">
 計算
 </button>
 
-<div id="scaleResult" class="result"></div>
+<div
+id="scaleResult"
+class="result">
+</div>
 
 </div>
 
@@ -828,8 +1084,15 @@ onclick="scaleCalc()">
 <label>方向</label>
 
 <select id="heightDirection">
-<option value="plus">上げる ＋</option>
-<option value="minus">下げる −</option>
+
+<option value="plus">
+上げる ＋
+</option>
+
+<option value="minus">
+下げる −
+</option>
+
 </select>
 
 <button
@@ -838,7 +1101,10 @@ onclick="heightCalc()">
 計算
 </button>
 
-<div id="heightResult" class="result"></div>
+<div
+id="heightResult"
+class="result">
+</div>
 
 </div>
 
@@ -853,7 +1119,12 @@ onclick="heightCalc()">
 <input id="slopeHeight" type="number" step="any">
 
 <label>法勾配 1 : n</label>
-<input id="slopeN" type="number" step="any" value="0.5">
+
+<input
+id="slopeN"
+type="number"
+step="any"
+value="0.5">
 
 <button
 class="calc-button"
@@ -861,7 +1132,10 @@ onclick="slopeCalc()">
 計算
 </button>
 
-<div id="slopeResult" class="result"></div>
+<div
+id="slopeResult"
+class="result">
+</div>
 
 </div>
 
@@ -882,7 +1156,12 @@ onclick="slopeCalc()">
 <input id="slopeCoordH" type="number" step="any">
 
 <label>法勾配 1 : n</label>
-<input id="slopeCoordN" type="number" step="any" value="0.5">
+
+<input
+id="slopeCoordN"
+type="number"
+step="any"
+value="0.5">
 
 <label>方向角（度）</label>
 <input id="slopeAngle" type="number" step="any">
@@ -893,7 +1172,10 @@ onclick="slopeCoordinate()">
 計算
 </button>
 
-<div id="slopeCoordinateResult" class="result"></div>
+<div
+id="slopeCoordinateResult"
+class="result">
+</div>
 
 </div>
 
@@ -919,12 +1201,16 @@ onclick="volumeCalc()">
 計算
 </button>
 
-<div id="volumeResult" class="result"></div>
-
+<div
+id="volumeResult"
+class="result">
 </div>
 
 </div>
+
 </div>
+</div>
+
 
 
 <!-- =========================
@@ -956,26 +1242,23 @@ onclick="showHome()">
 ここから管理できるようにします。
 </p>
 
-<button
-class="calc-button"
-onclick="openDropbox()">
-📁 Dropboxを開く
-</button>
-
 </div>
 
 </div>
+
 
 
 <!-- =========================
-     出来形管理
+     出来形
 ========================= -->
 
 <div id="qualityPage" class="page">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -991,7 +1274,7 @@ onclick="openDropbox()">
 
 <p>
 設計値・実測値・差・規格値を
-管理する機能を追加できます。
+管理する機能を追加します。
 </p>
 
 </div>
@@ -999,15 +1282,18 @@ onclick="openDropbox()">
 </div>
 
 
+
 <!-- =========================
-     写真管理
+     写真
 ========================= -->
 
 <div id="photoPage" class="page">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -1023,12 +1309,13 @@ onclick="openDropbox()">
 
 <p>
 工種・測点・撮影内容などを
-管理する機能を追加できます。
+管理する機能を追加します。
 </p>
 
 </div>
 
 </div>
+
 
 
 <!-- =========================
@@ -1039,7 +1326,9 @@ onclick="openDropbox()">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -1054,8 +1343,8 @@ onclick="openDropbox()">
 <h3>段階確認・立会</h3>
 
 <p>
-確認項目・予定日・実施日・写真などを
-管理する機能を追加できます。
+確認項目・予定日・実施日などを
+管理する機能を追加します。
 </p>
 
 </div>
@@ -1063,15 +1352,18 @@ onclick="openDropbox()">
 </div>
 
 
+
 <!-- =========================
-     施工計画書
+     施工計画
 ========================= -->
 
 <div id="planPage" class="page">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -1086,13 +1378,14 @@ onclick="openDropbox()">
 <h3>施工計画書</h3>
 
 <p>
-施工計画・工程管理などの機能を
-追加できます。
+施工計画・工程管理などの
+機能を追加します。
 </p>
 
 </div>
 
 </div>
+
 
 
 <!-- =========================
@@ -1103,7 +1396,9 @@ onclick="openDropbox()">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -1127,6 +1422,7 @@ onclick="openDropbox()">
 </div>
 
 
+
 <!-- =========================
      その他
 ========================= -->
@@ -1135,7 +1431,9 @@ onclick="openDropbox()">
 
 <div class="page-header">
 
-<button class="back-button" onclick="showHome()">
+<button
+class="back-button"
+onclick="showHome()">
 ← HOME
 </button>
 
@@ -1150,13 +1448,14 @@ onclick="openDropbox()">
 <h3>その他ツール</h3>
 
 <p>
-単価・土量・メモ・PDFなどの
-機能を追加できます。
+単価・土量・メモなどの
+機能を追加します。
 </p>
 
 </div>
 
 </div>
+
 
 
 <!-- =========================
@@ -1168,39 +1467,54 @@ onclick="openDropbox()">
 <button
 class="nav-button active"
 onclick="showHome()">
+
 <span>🏠</span>
 ホーム
+
 </button>
+
 
 <button
 class="nav-button"
 onclick="showPage('planPage')">
+
 <span>☷</span>
 工事一覧
+
 </button>
+
 
 <button
 class="nav-button"
 onclick="showPage('photoPage')">
+
 <span>📷</span>
 写真
+
 </button>
+
 
 <button
 class="nav-button"
 onclick="showPage('otherPage')">
+
 <span>📋</span>
 メモ
+
 </button>
+
 
 <button
 class="nav-button"
 onclick="showPage('settingsPage')">
+
 <span>⚙️</span>
 設定
+
 </button>
 
 </nav>
+
 
 
 <script>
@@ -1214,7 +1528,9 @@ function showPage(id){
   document
   .querySelectorAll(".page")
   .forEach(function(page){
+
     page.classList.remove("active");
+
   });
 
   document
@@ -1226,18 +1542,34 @@ function showPage(id){
 
 
 function showHome(){
+
   showPage("homePage");
+
 }
 
 
 /* =========================
-   Dropbox
+   基準点ナビ App Store
 ========================= */
 
-function openDropbox(){
+function openKijuntenNavi(){
 
   window.open(
-    "https://www.dropbox.com/scl/fo/4i1p7fb9tooc2cxtqnims/AENxaFyKAfMlWDOA3_MXpgg?rlkey=n0mpdedb5bdbtu6xt49u2ksqk&st=z7zpty0b&dl=0",
+    "https://apps.apple.com/jp/app/id6789161221",
+    "_blank"
+  );
+
+}
+
+
+/* =========================
+   SiteBox App Store
+========================= */
+
+function openSiteBox(){
+
+  window.open(
+    "https://apps.apple.com/jp/app/id1054850882",
     "_blank"
   );
 
@@ -1249,10 +1581,13 @@ function openDropbox(){
 ========================= */
 
 function n(id){
+
   return parseFloat(
     document.getElementById(id).value
   );
+
 }
+
 
 function valid(){
 
@@ -1268,7 +1603,9 @@ function valid(){
 }
 
 
-/* ① 2点間距離 */
+/* =========================
+   ① 2点間距離
+========================= */
 
 function distanceCalc(){
 
@@ -1279,20 +1616,33 @@ function distanceCalc(){
 
   if(!valid(x1,y1,x2,y2)){
 
-    document.getElementById("distanceResult").innerHTML=
+    document
+    .getElementById("distanceResult")
+    .innerHTML=
     "数値を入力してください";
 
     return;
   }
 
-  const d=Math.hypot(x2-x1,y2-y1);
+  const d=
+  Math.hypot(
+    x2-x1,
+    y2-y1
+  );
 
-  document.getElementById("distanceResult").innerHTML=
-  "距離 = "+d.toFixed(3)+" m";
+  document
+  .getElementById("distanceResult")
+  .innerHTML=
+  "距離 = "+
+  d.toFixed(3)+
+  " m";
+
 }
 
 
-/* ② B点から延長 */
+/* =========================
+   ② B点から延長
+========================= */
 
 function extensionCalc(){
 
@@ -1304,7 +1654,9 @@ function extensionCalc(){
 
   if(!valid(ax,ay,bx,by,ext)){
 
-    document.getElementById("extensionResult").innerHTML=
+    document
+    .getElementById("extensionResult")
+    .innerHTML=
     "数値を入力してください";
 
     return;
@@ -1312,26 +1664,43 @@ function extensionCalc(){
 
   const dx=bx-ax;
   const dy=by-ay;
-  const len=Math.hypot(dx,dy);
+
+  const len=
+  Math.hypot(dx,dy);
 
   if(len===0){
 
-    document.getElementById("extensionResult").innerHTML=
+    document
+    .getElementById("extensionResult")
+    .innerHTML=
     "A点とB点が同じです";
 
     return;
   }
 
-  const cx=bx+(dx/len)*ext;
-  const cy=by+(dy/len)*ext;
+  const cx=
+  bx+(dx/len)*ext;
 
-  document.getElementById("extensionResult").innerHTML=
-    "新点 X = "+cx.toFixed(3)+"<br>"+
-    "新点 Y = "+cy.toFixed(3);
+  const cy=
+  by+(dy/len)*ext;
+
+  document
+  .getElementById("extensionResult")
+  .innerHTML=
+
+  "新点 X = "+
+  cx.toFixed(3)+
+  "<br>"+
+
+  "新点 Y = "+
+  cy.toFixed(3);
+
 }
 
 
-/* ③ AからB方向 */
+/* =========================
+   ③ A点からB方向
+========================= */
 
 function pointFromA(){
 
@@ -1343,7 +1712,9 @@ function pointFromA(){
 
   if(!valid(ax,ay,bx,by,dist)){
 
-    document.getElementById("pointAResult").innerHTML=
+    document
+    .getElementById("pointAResult")
+    .innerHTML=
     "数値を入力してください";
 
     return;
@@ -1351,48 +1722,79 @@ function pointFromA(){
 
   const dx=bx-ax;
   const dy=by-ay;
-  const len=Math.hypot(dx,dy);
+
+  const len=
+  Math.hypot(dx,dy);
 
   if(len===0){
 
-    document.getElementById("pointAResult").innerHTML=
+    document
+    .getElementById("pointAResult")
+    .innerHTML=
     "A点とB点が同じです";
 
     return;
   }
 
-  const x=ax+(dx/len)*dist;
-  const y=ay+(dy/len)*dist;
+  const x=
+  ax+(dx/len)*dist;
 
-  document.getElementById("pointAResult").innerHTML=
-    "新点 X = "+x.toFixed(3)+"<br>"+
-    "新点 Y = "+y.toFixed(3);
+  const y=
+  ay+(dy/len)*dist;
+
+  document
+  .getElementById("pointAResult")
+  .innerHTML=
+
+  "新点 X = "+
+  x.toFixed(3)+
+  "<br>"+
+
+  "新点 Y = "+
+  y.toFixed(3);
+
 }
 
 
-/* ④ 円弧半径 */
+/* =========================
+   ④ 円弧半径
+========================= */
 
 function radiusCalc(){
 
   const L=n("chord");
   const h=n("sagitta");
 
-  if(!valid(L,h) || L<=0 || h<=0){
+  if(
+    !valid(L,h) ||
+    L<=0 ||
+    h<=0
+  ){
 
-    document.getElementById("radiusResult").innerHTML=
+    document
+    .getElementById("radiusResult")
+    .innerHTML=
     "弦長と矢高を正しく入力してください";
 
     return;
   }
 
-  const R=(L*L)/(8*h)+h/2;
+  const R=
+  (L*L)/(8*h)+h/2;
 
-  document.getElementById("radiusResult").innerHTML=
-    "半径 R = "+R.toFixed(3)+" m";
+  document
+  .getElementById("radiusResult")
+  .innerHTML=
+  "半径 R = "+
+  R.toFixed(3)+
+  " m";
+
 }
 
 
-/* ⑤ 縮尺 */
+/* =========================
+   ⑤ 縮尺
+========================= */
 
 function scaleCalc(){
 
@@ -1400,105 +1802,190 @@ function scaleCalc(){
   const from=n("scaleFrom");
   const to=n("scaleTo");
 
-  if(!valid(value,from,to) || from<=0 || to<=0){
+  if(
+    !valid(value,from,to) ||
+    from<=0 ||
+    to<=0
+  ){
 
-    document.getElementById("scaleResult").innerHTML=
+    document
+    .getElementById("scaleResult")
+    .innerHTML=
     "数値を確認してください";
 
     return;
   }
 
-  const answer=value*(from/to);
+  const answer=
+  value*(from/to);
 
-  document.getElementById("scaleResult").innerHTML=
-    "変更後 = "+answer.toFixed(3);
+  document
+  .getElementById("scaleResult")
+  .innerHTML=
+  "変更後 = "+
+  answer.toFixed(3);
+
 }
 
 
-/* ⑥ 高低差 */
+/* =========================
+   ⑥ 高低差
+========================= */
 
 function heightCalc(){
 
-  const elevation=n("elevation");
-  const diff=n("heightDifference");
+  const elevation=
+  n("elevation");
+
+  const diff=
+  n("heightDifference");
 
   if(!valid(elevation,diff)){
 
-    document.getElementById("heightResult").innerHTML=
+    document
+    .getElementById("heightResult")
+    .innerHTML=
     "数値を入力してください";
 
     return;
   }
 
   const direction=
-    document.getElementById("heightDirection").value;
+  document
+  .getElementById("heightDirection")
+  .value;
 
   const result=
-    direction==="plus"
-    ? elevation+diff
-    : elevation-diff;
+  direction==="plus"
+  ? elevation+diff
+  : elevation-diff;
 
-  document.getElementById("heightResult").innerHTML=
-    "標高 = "+result.toFixed(3)+" m";
+  document
+  .getElementById("heightResult")
+  .innerHTML=
+  "標高 = "+
+  result.toFixed(3)+
+  " m";
+
 }
 
 
-/* ⑦ 法勾配 */
+/* =========================
+   ⑦ 法勾配
+========================= */
 
 function slopeCalc(){
 
   const H=n("slopeHeight");
   const N=n("slopeN");
 
-  if(!valid(H,N) || H<0 || N<0){
+  if(
+    !valid(H,N) ||
+    H<0 ||
+    N<0
+  ){
 
-    document.getElementById("slopeResult").innerHTML=
+    document
+    .getElementById("slopeResult")
+    .innerHTML=
     "数値を確認してください";
 
     return;
   }
 
-  const horizontal=H*N;
-  const slopeLength=Math.hypot(H,horizontal);
+  const horizontal=
+  H*N;
 
-  document.getElementById("slopeResult").innerHTML=
-    "水平距離 = "+horizontal.toFixed(3)+" m<br>"+
-    "法長 = "+slopeLength.toFixed(3)+" m";
+  const slopeLength=
+  Math.hypot(
+    H,
+    horizontal
+  );
+
+  document
+  .getElementById("slopeResult")
+  .innerHTML=
+
+  "水平距離 = "+
+  horizontal.toFixed(3)+
+  " m<br>"+
+
+  "法長 = "+
+  slopeLength.toFixed(3)+
+  " m";
+
 }
 
 
-/* ⑧ 法勾配座標 */
+/* =========================
+   ⑧ 法勾配座標
+========================= */
 
 function slopeCoordinate(){
 
   const x=n("slopeX");
   const y=n("slopeY");
-  const H=n("slopeCoordH");
-  const N=n("slopeCoordN");
-  const angle=n("slopeAngle");
+
+  const H=
+  n("slopeCoordH");
+
+  const N=
+  n("slopeCoordN");
+
+  const angle=
+  n("slopeAngle");
 
   if(!valid(x,y,H,N,angle)){
 
-    document.getElementById("slopeCoordinateResult").innerHTML=
+    document
+    .getElementById(
+      "slopeCoordinateResult"
+    )
+    .innerHTML=
     "数値を入力してください";
 
     return;
   }
 
-  const horizontal=H*N;
-  const rad=angle*Math.PI/180;
+  const horizontal=
+  H*N;
 
-  const nx=x+horizontal*Math.cos(rad);
-  const ny=y+horizontal*Math.sin(rad);
+  const rad=
+  angle*Math.PI/180;
 
-  document.getElementById("slopeCoordinateResult").innerHTML=
-    "水平距離 = "+horizontal.toFixed(3)+" m<br>"+
-    "新点 X = "+nx.toFixed(3)+"<br>"+
-    "新点 Y = "+ny.toFixed(3);
+  const nx=
+  x+
+  horizontal*
+  Math.cos(rad);
+
+  const ny=
+  y+
+  horizontal*
+  Math.sin(rad);
+
+  document
+  .getElementById(
+    "slopeCoordinateResult"
+  )
+  .innerHTML=
+
+  "水平距離 = "+
+  horizontal.toFixed(3)+
+  " m<br>"+
+
+  "新点 X = "+
+  nx.toFixed(3)+
+  "<br>"+
+
+  "新点 Y = "+
+  ny.toFixed(3);
+
 }
 
 
-/* ⑨ 平均断面法 */
+/* =========================
+   ⑨ 平均断面法
+========================= */
 
 function volumeCalc(){
 
@@ -1506,18 +1993,31 @@ function volumeCalc(){
   const A2=n("area2");
   const L=n("sectionLength");
 
-  if(!valid(A1,A2,L) || A1<0 || A2<0 || L<0){
+  if(
+    !valid(A1,A2,L) ||
+    A1<0 ||
+    A2<0 ||
+    L<0
+  ){
 
-    document.getElementById("volumeResult").innerHTML=
+    document
+    .getElementById("volumeResult")
+    .innerHTML=
     "数値を確認してください";
 
     return;
   }
 
-  const V=((A1+A2)/2)*L;
+  const V=
+  ((A1+A2)/2)*L;
 
-  document.getElementById("volumeResult").innerHTML=
-    "土量 = "+V.toFixed(3)+" ㎥";
+  document
+  .getElementById("volumeResult")
+  .innerHTML=
+  "土量 = "+
+  V.toFixed(3)+
+  " ㎥";
+
 }
 
 </script>
