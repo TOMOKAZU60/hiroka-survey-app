@@ -56,7 +56,6 @@ header p{
   font-size:15px;
 }
 
-
 main{
   max-width:720px;
   margin:auto;
@@ -75,20 +74,18 @@ main{
 
 
 /* =========================
-   ①〜⑨ メニュー
+   ①〜⑨ 計算メニュー
 ========================= */
 
 .quick{
   display:grid;
   grid-template-columns:1fr 1fr;
-
   gap:16px;
   padding:18px;
 }
 
 .quick a{
   min-height:150px;
-
   padding:22px 12px;
 
   display:flex;
@@ -98,7 +95,6 @@ main{
   border-radius:22px;
 
   color:white;
-
   text-decoration:none;
   text-align:center;
 
@@ -112,48 +108,63 @@ main{
 }
 
 
-/* ボタンカラー */
-
+/* ① */
 .quick a:nth-child(1){
   background:
   linear-gradient(145deg,#36a7ff,#087be0);
 }
 
+
+/* ② */
 .quick a:nth-child(2){
   background:
   linear-gradient(145deg,#35cf76,#08a84c);
 }
 
+
+/* ③ */
 .quick a:nth-child(3){
   background:
   linear-gradient(145deg,#ff9a47,#ff6f19);
 }
 
+
+/* ④ */
 .quick a:nth-child(4){
   background:
   linear-gradient(145deg,#b45cff,#7d26dc);
 }
 
+
+/* ⑤ */
 .quick a:nth-child(5){
   background:
   linear-gradient(145deg,#ff6686,#e73661);
 }
 
+
+/* ⑥ */
 .quick a:nth-child(6){
   background:
   linear-gradient(145deg,#39c8c4,#159b9a);
 }
 
+
+/* ⑦ */
 .quick a:nth-child(7){
   background:
   linear-gradient(145deg,#ffd34f,#e7a900);
 }
 
+
+/* ⑧ */
 .quick a:nth-child(8){
   background:
   linear-gradient(145deg,#6f82ff,#4a55d8);
 }
 
+
+/* ⑨ */
 .quick a:nth-child(9){
   background:
   linear-gradient(145deg,#8e9ba8,#64717e);
@@ -182,10 +193,11 @@ main{
   margin:0 0 14px;
 
   color:#0877bd;
-
   font-size:20px;
 }
 
+
+/* 共通ボタン */
 
 .linkbtn{
   display:flex;
@@ -202,7 +214,6 @@ main{
   border-radius:13px;
 
   color:white;
-
   text-align:center;
   text-decoration:none;
 
@@ -224,20 +235,27 @@ main{
 }
 
 
-/* Excel */
+/* 数量表 */
 
-.excel{
+.document{
   background:
   linear-gradient(145deg,#2f9d62,#217346);
 }
 
 
+/* 図面 */
+
+.drawing{
+  background:
+  linear-gradient(145deg,#6f82ff,#4a55d8);
+}
+
+
 /* =========================
-   下メニュー
+   下部メニュー
 ========================= */
 
 .bottomnav{
-
   position:fixed;
 
   left:0;
@@ -247,9 +265,7 @@ main{
   height:76px;
 
   display:grid;
-
-  grid-template-columns:
-  repeat(5,1fr);
+  grid-template-columns:repeat(5,1fr);
 
   background:
   rgba(255,255,255,.96);
@@ -271,7 +287,6 @@ main{
 
 
 .bottomnav a{
-
   display:flex;
 
   flex-direction:column;
@@ -308,7 +323,6 @@ main{
 ========================= */
 
 footer{
-
   padding:15px;
 
   text-align:center;
@@ -373,6 +387,7 @@ footer{
 </header>
 
 
+
 <main>
 
 
@@ -384,6 +399,7 @@ footer{
 src="home.jpg"
 class="home-photo"
 alt="広川護岸（17工区）工事">
+
 
 
 <!-- =====================
@@ -469,13 +485,25 @@ href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
 
 
 
-<!-- 金抜 Excel -->
+<!-- 数量表 -->
 
 <a
-class="linkbtn excel"
-href="金抜（507-45679-002）.xlsx">
+class="linkbtn document"
+href="金入.pdf">
 
-📊 金抜（507-45679-002）.xlsxを開く
+📊 数量表
+
+</a>
+
+
+
+<!-- 図面 -->
+
+<a
+class="linkbtn drawing"
+href="図面（507-45679-002）.dwx">
+
+📐 図面
 
 </a>
 
@@ -536,7 +564,7 @@ href="index.html">
 
 
 
-<!-- SiteBox -->
+<!-- 写真 / SiteBox -->
 
 <a
 href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
