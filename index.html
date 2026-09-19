@@ -2,921 +2,196 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-<title>広川護岸（17工区）工事</title>
+<title>広川護岸 現場計算</title>
 
 <style>
-
-/* =========================
-   基本
-========================= */
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#eef1f5;
+  margin:0;
+  background:#f2f4f7;
   color:#222;
-  padding-bottom:92px;
 }
-
-button,
-input,
-select{
-  font-family:inherit;
-}
-
-
-/* =========================
-   ヘッダー
-========================= */
 
 header{
-  background:linear-gradient(180deg,#1689dc,#0874c4);
-  color:white;
-
-  padding:
-  calc(14px + env(safe-area-inset-top))
-  20px
-  17px;
-
-  box-shadow:0 3px 8px rgba(0,0,0,.22);
-}
-
-.header-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  background:#1769aa;
+  color:#fff;
+  padding:18px 12px;
+  text-align:center;
 }
 
 header h1{
   margin:0;
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:.5px;
+  font-size:22px;
 }
 
-.header-setting{
-  font-size:30px;
-  border:0;
-  background:none;
-  width:auto;
-  padding:0;
-  margin:0;
-}
-
-.subtitle{
-  margin-top:7px;
-  font-size:13px;
-}
-
-
-/* =========================
-   HOME写真
-========================= */
-
-.hero{
-  background:#dbe5ec;
-  min-height:200px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  overflow:hidden;
-}
-
-.hero img{
-  width:100%;
-  height:auto;
-  max-height:300px;
-  object-fit:cover;
-  display:block;
-}
-
-
-/* =========================
-   HOME メニュー
-========================= */
-
-.home-menu{
-  max-width:700px;
-  margin:auto;
-
-  display:grid;
-  grid-template-columns:1fr 1fr;
-
-  gap:14px;
-
-  padding:
-  15px
-  11px
-  25px;
-}
-
-
-/* =========================
-   立体ボタン
-========================= */
-
-.menu-card{
-  position:relative;
-
-  border:none;
-
-  min-height:126px;
-
-  border-radius:17px;
-
-  color:white;
-
-  text-align:left;
-
-  padding:17px 13px;
-
-  display:flex;
-  align-items:center;
-
-  gap:11px;
-
-  cursor:pointer;
-
-  /* 立体感 */
-  box-shadow:
-    0 7px 0 rgba(0,0,0,.28),
-    0 11px 17px rgba(0,0,0,.18),
-    inset 0 2px 1px rgba(255,255,255,.38),
-    inset 0 -2px 2px rgba(0,0,0,.10);
-
-  transition:
-    transform .08s ease,
-    box-shadow .08s ease;
-
-  -webkit-tap-highlight-color:transparent;
-}
-
-
-/* 上側の光沢 */
-
-.menu-card::before{
-  content:"";
-
-  position:absolute;
-
-  top:2px;
-  left:10px;
-  right:10px;
-
-  height:42%;
-
-  border-radius:14px 14px 25px 25px;
-
-  background:
-  linear-gradient(
-    180deg,
-    rgba(255,255,255,.20),
-    rgba(255,255,255,0)
-  );
-
-  pointer-events:none;
-}
-
-
-/* 押した時に沈む */
-
-.menu-card:active{
-  transform:translateY(6px);
-
-  box-shadow:
-    0 1px 0 rgba(0,0,0,.28),
-    0 4px 7px rgba(0,0,0,.16),
-    inset 0 2px 1px rgba(255,255,255,.25);
-}
-
-
-.menu-icon{
-  position:relative;
-  z-index:2;
-
-  font-size:36px;
-
-  min-width:41px;
-
-  text-align:center;
-
-  filter:
-  drop-shadow(
-    0 2px 1px rgba(0,0,0,.18)
-  );
-}
-
-.menu-text{
-  position:relative;
-  z-index:2;
-}
-
-.menu-title{
-  font-size:18px;
-  font-weight:800;
-  margin-bottom:5px;
-
-  text-shadow:
-  0 1px 2px rgba(0,0,0,.22);
-}
-
-.menu-description{
+header p{
+  margin:5px 0 0;
   font-size:12px;
-  line-height:1.45;
 }
 
-
-/* =========================
-   ボタン色
-========================= */
-
-.blue{
-  background:
-  linear-gradient(145deg,#34a4ff,#0874cf);
-}
-
-.green{
-  background:
-  linear-gradient(145deg,#2bd57c,#079b49);
-}
-
-.orange{
-  background:
-  linear-gradient(145deg,#ff963b,#ef5809);
-}
-
-.purple{
-  background:
-  linear-gradient(145deg,#bd61ec,#7826c1);
-}
-
-.red{
-  background:
-  linear-gradient(145deg,#ff6271,#cf283b);
-}
-
-.cyan{
-  background:
-  linear-gradient(145deg,#3dcbd2,#128da1);
-}
-
-.gray{
-  background:
-  linear-gradient(145deg,#929da7,#56616c);
-}
-
-.yellow{
-  background:
-  linear-gradient(145deg,#ffc83d,#e69500);
-}
-
-
-/* 基準点ナビ */
-
-.navy{
-  background:
-  linear-gradient(145deg,#468ee8,#174d9f);
-}
-
-
-/* SiteBox */
-
-.sitebox{
-  background:
-  linear-gradient(145deg,#39c9b9,#08776f);
-}
-
-
-/* =========================
-   ページ
-========================= */
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.page-header{
-  background:white;
-
-  position:sticky;
-  top:0;
-  z-index:20;
-
-  padding:11px 12px;
-
-  display:flex;
-  align-items:center;
-
-  border-bottom:1px solid #ddd;
-
-  box-shadow:
-  0 2px 5px rgba(0,0,0,.08);
-}
-
-.back-button{
-  width:auto;
-
-  margin:0 12px 0 0;
-
-  padding:8px 12px;
-
-  background:
-  linear-gradient(180deg,#2c9aed,#0874c4);
-
-  color:white;
-
-  border:none;
-
-  border-radius:8px;
-
-  font-size:15px;
-  font-weight:bold;
-
-  box-shadow:
-  0 3px 0 #075b98,
-  0 4px 7px rgba(0,0,0,.15);
-}
-
-.back-button:active{
-  transform:translateY(2px);
-  box-shadow:0 1px 0 #075b98;
-}
-
-.page-header h2{
-  margin:0;
-  color:#1769aa;
-  font-size:20px;
-}
-
-
-/* =========================
-   計算
-========================= */
-
-.calculation-area{
-  max-width:650px;
+main{
+  max-width:600px;
   margin:auto;
   padding:10px;
 }
 
-.calc-card{
-  background:white;
-
-  margin-bottom:12px;
-
-  padding:15px;
-
-  border-radius:13px;
-
-  box-shadow:
-  0 3px 9px rgba(0,0,0,.10);
+.card{
+  background:#fff;
+  margin-bottom:14px;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.calc-card h3{
-  color:#1769aa;
+h2{
+  margin:0 0 12px;
   font-size:18px;
-  margin:0 0 11px;
+  color:#1769aa;
 }
 
 label{
   display:block;
-  margin:7px 0 3px;
+  font-size:13px;
+  font-weight:600;
+  margin-top:9px;
+}
+
+input,select{
+  width:100%;
+  padding:11px;
+  margin-top:4px;
+  border:1px solid #bbb;
+  border-radius:9px;
+  font-size:16px;
+  background:#fff;
+}
+
+button,.linkbtn{
+  display:block;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:0;
+  border-radius:10px;
+  background:#1769aa;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.copy{
+  background:#16835d;
+}
+
+.clear{
+  background:#777;
+}
+
+.sitebox{
+  background:#16835d;
+}
+
+.dropbox{
+  background:#0866ff;
+}
+
+.result{
+  margin-top:12px;
+  padding:12px;
+  background:#eef6ff;
+  border-radius:9px;
+  white-space:pre-line;
+  font-size:15px;
+  line-height:1.7;
+  min-height:45px;
+}
+
+.home-photo{
+  width:100%;
+  display:block;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.quick a{
+  padding:11px 5px;
+  background:#e8f1fa;
+  color:#1769aa;
+  border-radius:9px;
+  text-align:center;
+  text-decoration:none;
   font-size:13px;
   font-weight:600;
 }
 
-input,
-select{
-  width:100%;
-  height:42px;
-
-  border:1px solid #bbb;
-  border-radius:7px;
-
-  padding:7px 9px;
-
-  font-size:16px;
-
-  background:white;
-}
-
-.calc-button{
-  width:100%;
-
-  margin-top:11px;
-
-  padding:12px;
-
-  border:none;
-
-  border-radius:9px;
-
-  background:
-  linear-gradient(180deg,#2998ea,#0874c4);
-
-  color:white;
-
-  font-size:16px;
-  font-weight:bold;
-
-  box-shadow:
-  0 4px 0 #075b98,
-  0 6px 8px rgba(0,0,0,.16);
-}
-
-.calc-button:active{
-  transform:translateY(3px);
-  box-shadow:0 1px 0 #075b98;
-}
-
-.result{
-  margin-top:11px;
-
-  min-height:39px;
-
-  padding:9px;
-
-  background:#eef6ff;
-
-  border-radius:7px;
-
-  font-weight:bold;
-  line-height:1.6;
-}
-
-
-/* =========================
-   準備中
-========================= */
-
-.coming{
-  max-width:600px;
-
-  margin:20px 10px;
-
-  padding:25px 18px;
-
-  background:white;
-
-  border-radius:14px;
-
+footer{
   text-align:center;
-
-  box-shadow:
-  0 3px 10px rgba(0,0,0,.10);
-}
-
-.coming-icon{
-  font-size:55px;
-}
-
-.coming h3{
-  margin:10px 0;
-  color:#1769aa;
-}
-
-.coming p{
-  color:#666;
-  line-height:1.7;
-}
-
-
-/* =========================
-   下部ナビ
-========================= */
-
-.bottom-nav{
-  position:fixed;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  z-index:100;
-
-  height:
-  calc(72px + env(safe-area-inset-bottom));
-
-  padding-bottom:
-  env(safe-area-inset-bottom);
-
-  background:white;
-
-  border-top:1px solid #ccc;
-
-  box-shadow:
-  0 -2px 8px rgba(0,0,0,.10);
-
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-}
-
-.nav-button{
-  border:0;
-  background:white;
-
-  color:#444;
-
   font-size:11px;
-
-  display:flex;
-  flex-direction:column;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:4px 1px;
+  color:#777;
+  padding:15px;
 }
-
-.nav-button span{
-  font-size:24px;
-  margin-bottom:2px;
-}
-
-.nav-button.active{
-  color:#1684d5;
-  font-weight:bold;
-}
-
-
-/* =========================
-   iPhone
-========================= */
-
-@media(max-width:420px){
-
-  header h1{
-    font-size:22px;
-  }
-
-  .home-menu{
-    gap:13px 10px;
-  }
-
-  .menu-card{
-    min-height:120px;
-    padding:14px 10px;
-    gap:8px;
-  }
-
-  .menu-icon{
-    font-size:32px;
-    min-width:35px;
-  }
-
-  .menu-title{
-    font-size:17px;
-  }
-
-  .menu-description{
-    font-size:11px;
-  }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     HOME
-========================= -->
-
-<div id="homePage" class="page active">
-
 <header>
-
-<div class="header-row">
-
-<h1>広川護岸（17工区）工事</h1>
-
-<button
-class="header-setting"
-onclick="showPage('settingsPage')">
-⚙️
-</button>
-
-</div>
-
-<div class="subtitle">
-安全・品質・確実な施工　地域の未来をつくる
-</div>
-
+<h1>広川護岸 現場計算</h1>
+<p>測量・施工管理 計算ツール</p>
 </header>
 
+<main>
 
-<!-- HOME写真 -->
+<!-- HOME -->
+<section class="card">
+<h2>🏠 HOME</h2>
 
-<div class="hero">
+<img src="home.jpg" class="home-photo" alt="広川護岸">
 
-<img
-src="home.jpg"
-alt="広川護岸 HOME">
-
+<div class="quick">
+<a href="#c1">① 2点間距離</a>
+<a href="#c2">② B点延長</a>
+<a href="#c3">③ 指定距離座標</a>
+<a href="#c4">④ 円弧半径</a>
+<a href="#c5">⑤ 縮尺</a>
+<a href="#c6">⑥ 高低差</a>
+<a href="#c7">⑦ 法勾配</a>
+<a href="#c8">⑧ 法勾配座標</a>
+<a href="#c9">⑨ 土量</a>
 </div>
 
-
-<!-- 10個のメニュー -->
-
-<div class="home-menu">
-
-
-<!-- 1 測量計算 -->
-
-<button
-class="menu-card blue"
-onclick="showPage('surveyPage')">
-
-<div class="menu-icon">📐</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-測量計算
-</div>
-
-<div class="menu-description">
-距離・座標・延長点<br>
-円弧・勾配など
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 2 出来形管理 -->
-
-<button
-class="menu-card green"
-onclick="showPage('qualityPage')">
-
-<div class="menu-icon">📊</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-出来形管理
-</div>
-
-<div class="menu-description">
-設計値・実測値・差<br>
-規格値確認
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 3 写真管理 -->
-
-<button
-class="menu-card orange"
-onclick="showPage('photoPage')">
-
-<div class="menu-icon">📷</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-写真管理
-</div>
-
-<div class="menu-description">
-電子黒板・工種別<br>
-測点・撮影内容
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 4 段階確認 -->
-
-<button
-class="menu-card purple"
-onclick="showPage('checkPage')">
-
-<div class="menu-icon">📋</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-段階確認・立会
-</div>
-
-<div class="menu-description">
-確認項目・予定日<br>
-実施日・写真
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 5 施工計画書 -->
-
-<button
-class="menu-card red"
-onclick="showPage('planPage')">
-
-<div class="menu-icon">⛑️</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-施工計画書
-</div>
-
-<div class="menu-description">
-施工計画書<br>
-工程管理
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 6 資料・図面 -->
-
-<button
-class="menu-card cyan"
-onclick="showPage('documentsPage')">
-
-<div class="menu-icon">🗂️</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-資料・図面
-</div>
-
-<div class="menu-description">
-図面・仕様書<br>
-基準・共通資料
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 7 工事設定 -->
-
-<button
-class="menu-card gray"
-onclick="showPage('settingsPage')">
-
-<div class="menu-icon">⚙️</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-工事設定
-</div>
-
-<div class="menu-description">
-工事名・発注者<br>
-受注者・工期
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 8 その他 -->
-
-<button
-class="menu-card yellow"
-onclick="showPage('otherPage')">
-
-<div class="menu-icon">🧮</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-その他ツール
-</div>
-
-<div class="menu-description">
-単価・土量・メモ<br>
-便利ツール
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 9 基準点ナビ -->
-
-<button
-class="menu-card navy"
-onclick="openKijuntenNavi()">
-
-<div class="menu-icon">📍</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-基準点ナビ
-</div>
-
-<div class="menu-description">
-基準点・座標<br>
-App Store
-</div>
-
-</div>
-
-</button>
-
-
-<!-- 10 SiteBox -->
-
-<button
-class="menu-card sitebox"
-onclick="openSiteBox()">
-
-<div class="menu-icon">📱</div>
-
-<div class="menu-text">
-
-<div class="menu-title">
-SiteBox
-</div>
-
-<div class="menu-description">
-現場写真・黒板<br>
-App Store
-</div>
-
-</div>
-
-</button>
-
-
-</div>
-</div>
-
-
-
-<!-- =========================
-     測量計算
-========================= -->
-
-<div id="surveyPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>📐 測量計算</h2>
-
-</div>
-
-
-<div class="calculation-area">
+<a class="linkbtn sitebox"
+href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
+📱 SiteBoxを開く
+</a>
+
+<a class="linkbtn dropbox"
+href="https://www.dropbox.com/"
+target="_blank">
+📁 Dropboxを開く
+</a>
+
+</section>
 
 
 <!-- ① -->
-
-<div class="calc-card">
-
-<h3>① 2点間距離</h3>
+<section class="card" id="c1">
+<h2>① 2点間距離</h2>
 
 <label>A点 X</label>
 <input id="x1" type="number" step="any">
@@ -930,60 +205,42 @@ onclick="showHome()">
 <label>B点 Y</label>
 <input id="y2" type="number" step="any">
 
-<button
-class="calc-button"
-onclick="distanceCalc()">
-計算
-</button>
-
-<div
-id="distanceResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc1()">計算</button>
+<div class="result" id="r1"></div>
+<button class="copy" onclick="copyResult('r1')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c1')">入力をクリア</button>
+</section>
 
 
 <!-- ② -->
-
-<div class="calc-card">
-
-<h3>② A→B 延長座標</h3>
+<section class="card" id="c2">
+<h2>② A→B方向 B点から延長</h2>
 
 <label>A点 X</label>
-<input id="ax" type="number" step="any">
+<input id="a2x" type="number" step="any">
 
 <label>A点 Y</label>
-<input id="ay" type="number" step="any">
+<input id="a2y" type="number" step="any">
 
 <label>B点 X</label>
-<input id="bx" type="number" step="any">
+<input id="b2x" type="number" step="any">
 
 <label>B点 Y</label>
-<input id="by" type="number" step="any">
+<input id="b2y" type="number" step="any">
 
-<label>B点から延長する距離（m）</label>
-<input id="ext" type="number" step="any">
+<label>B点からの延長距離 (m)</label>
+<input id="d2" type="number" step="any">
 
-<button
-class="calc-button"
-onclick="extensionCalc()">
-計算
-</button>
-
-<div
-id="extensionResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc2()">計算</button>
+<div class="result" id="r2"></div>
+<button class="copy" onclick="copyResult('r2')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c2')">入力をクリア</button>
+</section>
 
 
 <!-- ③ -->
-
-<div class="calc-card">
-
-<h3>③ A点からB方向へ指定距離</h3>
+<section class="card" id="c3">
+<h2>③ A→B方向 指定距離の座標</h2>
 
 <label>A点 X</label>
 <input id="a3x" type="number" step="any">
@@ -997,1027 +254,350 @@ class="result">
 <label>B点 Y</label>
 <input id="b3y" type="number" step="any">
 
-<label>A点からの距離（m）</label>
+<label>A点からの距離 (m)</label>
 <input id="d3" type="number" step="any">
 
-<button
-class="calc-button"
-onclick="pointFromA()">
-計算
-</button>
-
-<div
-id="pointAResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc3()">計算</button>
+<div class="result" id="r3"></div>
+<button class="copy" onclick="copyResult('r3')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c3')">入力をクリア</button>
+</section>
 
 
 <!-- ④ -->
+<section class="card" id="c4">
+<h2>④ 円弧半径</h2>
 
-<div class="calc-card">
+<label>弦長 L (m)</label>
+<input id="l4" type="number" step="any">
 
-<h3>④ 円弧半径</h3>
+<label>矢高 h (m)</label>
+<input id="h4" type="number" step="any">
 
-<label>弦長 L（m）</label>
-<input id="chord" type="number" step="any">
-
-<label>矢高 h（m）</label>
-<input id="sagitta" type="number" step="any">
-
-<button
-class="calc-button"
-onclick="radiusCalc()">
-計算
-</button>
-
-<div
-id="radiusResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc4()">計算</button>
+<div class="result" id="r4"></div>
+<button class="copy" onclick="copyResult('r4')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c4')">入力をクリア</button>
+</section>
 
 
 <!-- ⑤ -->
-
-<div class="calc-card">
-
-<h3>⑤ 縮尺換算</h3>
+<section class="card" id="c5">
+<h2>⑤ 縮尺換算</h2>
 
 <label>元の寸法</label>
-<input id="scaleValue" type="number" step="any">
+<input id="v5" type="number" step="any">
 
-<label>元の縮尺 1 /</label>
-<input id="scaleFrom" type="number" step="any">
+<label>元の縮尺 1：</label>
+<input id="s51" type="number" step="any" value="100">
 
-<label>変更後の縮尺 1 /</label>
-<input id="scaleTo" type="number" step="any">
+<label>変更後の縮尺 1：</label>
+<input id="s52" type="number" step="any" value="20">
 
-<button
-class="calc-button"
-onclick="scaleCalc()">
-計算
-</button>
-
-<div
-id="scaleResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc5()">計算</button>
+<div class="result" id="r5"></div>
+<button class="copy" onclick="copyResult('r5')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c5')">入力をクリア</button>
+</section>
 
 
 <!-- ⑥ -->
+<section class="card" id="c6">
+<h2>⑥ 高低差・標高</h2>
 
-<div class="calc-card">
+<label>基準標高 (m)</label>
+<input id="e6" type="number" step="any">
 
-<h3>⑥ 高低差・標高計算</h3>
+<label>高低差 (m)</label>
+<input id="dh6" type="number" step="any">
 
-<label>基準標高（m）</label>
-<input id="elevation" type="number" step="any">
-
-<label>高低差（m）</label>
-<input id="heightDifference" type="number" step="any">
-
-<label>方向</label>
-
-<select id="heightDirection">
-
-<option value="plus">
-上げる ＋
-</option>
-
-<option value="minus">
-下げる −
-</option>
-
+<select id="pm6">
+<option value="1">＋ 上がる</option>
+<option value="-1">－ 下がる</option>
 </select>
 
-<button
-class="calc-button"
-onclick="heightCalc()">
-計算
-</button>
-
-<div
-id="heightResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc6()">計算</button>
+<div class="result" id="r6"></div>
+<button class="copy" onclick="copyResult('r6')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c6')">入力をクリア</button>
+</section>
 
 
 <!-- ⑦ -->
+<section class="card" id="c7">
+<h2>⑦ 法勾配 1：n 計算</h2>
 
-<div class="calc-card">
+<label>高さ H (m)</label>
+<input id="h7" type="number" step="any">
 
-<h3>⑦ 法勾配計算</h3>
+<label>勾配 n</label>
+<input id="n7" type="number" step="any" value="0.5">
 
-<label>高さ H（m）</label>
-<input id="slopeHeight" type="number" step="any">
-
-<label>法勾配 1 : n</label>
-
-<input
-id="slopeN"
-type="number"
-step="any"
-value="0.5">
-
-<button
-class="calc-button"
-onclick="slopeCalc()">
-計算
-</button>
-
-<div
-id="slopeResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc7()">計算</button>
+<div class="result" id="r7"></div>
+<button class="copy" onclick="copyResult('r7')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c7')">入力をクリア</button>
+</section>
 
 
 <!-- ⑧ -->
-
-<div class="calc-card">
-
-<h3>⑧ 法勾配 座標計算</h3>
+<section class="card" id="c8">
+<h2>⑧ 法勾配の座標計算</h2>
 
 <label>基準点 X</label>
-<input id="slopeX" type="number" step="any">
+<input id="x8" type="number" step="any">
 
 <label>基準点 Y</label>
-<input id="slopeY" type="number" step="any">
+<input id="y8" type="number" step="any">
 
-<label>高さ H（m）</label>
-<input id="slopeCoordH" type="number" step="any">
+<label>方向角 (°)</label>
+<input id="ang8" type="number" step="any">
 
-<label>法勾配 1 : n</label>
+<label>高さ H (m)</label>
+<input id="h8" type="number" step="any">
 
-<input
-id="slopeCoordN"
-type="number"
-step="any"
-value="0.5">
+<label>勾配 n</label>
+<input id="n8" type="number" step="any" value="0.5">
 
-<label>方向角（度）</label>
-<input id="slopeAngle" type="number" step="any">
-
-<button
-class="calc-button"
-onclick="slopeCoordinate()">
-計算
-</button>
-
-<div
-id="slopeCoordinateResult"
-class="result">
-</div>
-
-</div>
+<button onclick="calc8()">計算</button>
+<div class="result" id="r8"></div>
+<button class="copy" onclick="copyResult('r8')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c8')">入力をクリア</button>
+</section>
 
 
 <!-- ⑨ -->
+<section class="card" id="c9">
+<h2>⑨ 平均断面法 土量計算</h2>
 
-<div class="calc-card">
+<label>断面積 A1 (㎡)</label>
+<input id="a91" type="number" step="any">
 
-<h3>⑨ 平均断面法 土量計算</h3>
+<label>断面積 A2 (㎡)</label>
+<input id="a92" type="number" step="any">
 
-<label>断面積 A1（㎡）</label>
-<input id="area1" type="number" step="any">
+<label>区間距離 L (m)</label>
+<input id="l9" type="number" step="any">
 
-<label>断面積 A2（㎡）</label>
-<input id="area2" type="number" step="any">
+<button onclick="calc9()">計算</button>
+<div class="result" id="r9"></div>
+<button class="copy" onclick="copyResult('r9')">結果をコピー</button>
+<button class="clear" onclick="clearCard('c9')">入力をクリア</button>
+</section>
 
-<label>測点間距離 L（m）</label>
-<input id="sectionLength" type="number" step="any">
+</main>
 
-<button
-class="calc-button"
-onclick="volumeCalc()">
-計算
-</button>
-
-<div
-id="volumeResult"
-class="result">
-</div>
-
-</div>
-
-</div>
-</div>
-
-
-
-<!-- =========================
-     資料・図面
-========================= -->
-
-<div id="documentsPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>🗂️ 資料・図面</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">🗂️</div>
-
-<h3>資料・図面</h3>
-
-<p>
-図面・仕様書・基準・共通資料などを
-ここから管理できるようにします。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     出来形
-========================= -->
-
-<div id="qualityPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>📊 出来形管理</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">📊</div>
-
-<h3>出来形管理</h3>
-
-<p>
-設計値・実測値・差・規格値を
-管理する機能を追加します。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     写真
-========================= -->
-
-<div id="photoPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>📷 写真管理</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">📷</div>
-
-<h3>写真管理</h3>
-
-<p>
-工種・測点・撮影内容などを
-管理する機能を追加します。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     段階確認
-========================= -->
-
-<div id="checkPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>📋 段階確認・立会</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">📋</div>
-
-<h3>段階確認・立会</h3>
-
-<p>
-確認項目・予定日・実施日などを
-管理する機能を追加します。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     施工計画
-========================= -->
-
-<div id="planPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>⛑️ 施工計画書</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">⛑️</div>
-
-<h3>施工計画書</h3>
-
-<p>
-施工計画・工程管理などの
-機能を追加します。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     工事設定
-========================= -->
-
-<div id="settingsPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>⚙️ 工事設定</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">⚙️</div>
-
-<h3>広川護岸（17工区）工事</h3>
-
-<p>
-工事名・発注者・受注者・工期などを
-設定する画面にできます。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     その他
-========================= -->
-
-<div id="otherPage" class="page">
-
-<div class="page-header">
-
-<button
-class="back-button"
-onclick="showHome()">
-← HOME
-</button>
-
-<h2>🧮 その他ツール</h2>
-
-</div>
-
-<div class="coming">
-
-<div class="coming-icon">🧮</div>
-
-<h3>その他ツール</h3>
-
-<p>
-単価・土量・メモなどの
-機能を追加します。
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     下部ナビ
-========================= -->
-
-<nav class="bottom-nav">
-
-<button
-class="nav-button active"
-onclick="showHome()">
-
-<span>🏠</span>
-ホーム
-
-</button>
-
-
-<button
-class="nav-button"
-onclick="showPage('planPage')">
-
-<span>☷</span>
-工事一覧
-
-</button>
-
-
-<button
-class="nav-button"
-onclick="showPage('photoPage')">
-
-<span>📷</span>
-写真
-
-</button>
-
-
-<button
-class="nav-button"
-onclick="showPage('otherPage')">
-
-<span>📋</span>
-メモ
-
-</button>
-
-
-<button
-class="nav-button"
-onclick="showPage('settingsPage')">
-
-<span>⚙️</span>
-設定
-
-</button>
-
-</nav>
-
+<footer>
+広川護岸（17工区）工事／現場計算ツール
+</footer>
 
 
 <script>
 
-/* =========================
-   ページ切替
-========================= */
-
-function showPage(id){
-
-  document
-  .querySelectorAll(".page")
-  .forEach(function(page){
-
-    page.classList.remove("active");
-
-  });
-
-  document
-  .getElementById(id)
-  .classList.add("active");
-
-  window.scrollTo(0,0);
-}
-
-
-function showHome(){
-
-  showPage("homePage");
-
-}
-
-
-/* =========================
-   基準点ナビ App Store
-========================= */
-
-function openKijuntenNavi(){
-
-  window.open(
-    "https://apps.apple.com/jp/app/id6789161221",
-    "_blank"
-  );
-
-}
-
-
-/* =========================
-   SiteBox App Store
-========================= */
-
-function openSiteBox(){
-
-  window.open(
-    "https://apps.apple.com/jp/app/id1054850882",
-    "_blank"
-  );
-
-}
-
-
-/* =========================
-   共通
-========================= */
-
 function n(id){
-
-  return parseFloat(
-    document.getElementById(id).value
-  );
-
+  return parseFloat(document.getElementById(id).value);
 }
-
 
 function valid(){
+  return [...arguments].every(Number.isFinite);
+}
 
-  for(let i=0;i<arguments.length;i++){
-
-    if(!Number.isFinite(arguments[i])){
-      return false;
-    }
-
-  }
-
-  return true;
+function f(v){
+  return Number(v).toFixed(3);
 }
 
 
-/* =========================
-   ① 2点間距離
-========================= */
+/* ① */
+function calc1(){
+  let ax=n("x1"), ay=n("y1");
+  let bx=n("x2"), by=n("y2");
 
-function distanceCalc(){
+  if(!valid(ax,ay,bx,by)) return;
 
-  const x1=n("x1");
-  const y1=n("y1");
-  const x2=n("x2");
-  const y2=n("y2");
+  let dx=bx-ax;
+  let dy=by-ay;
+  let d=Math.hypot(dx,dy);
 
-  if(!valid(x1,y1,x2,y2)){
-
-    document
-    .getElementById("distanceResult")
-    .innerHTML=
-    "数値を入力してください";
-
-    return;
-  }
-
-  const d=
-  Math.hypot(
-    x2-x1,
-    y2-y1
-  );
-
-  document
-  .getElementById("distanceResult")
-  .innerHTML=
-  "距離 = "+
-  d.toFixed(3)+
-  " m";
-
+  document.getElementById("r1").innerText =
+  "ΔX = "+f(dx)+" m\n"+
+  "ΔY = "+f(dy)+" m\n"+
+  "水平距離 = "+f(d)+" m";
 }
 
 
-/* =========================
-   ② B点から延長
-========================= */
+/* ② */
+function calc2(){
+  let ax=n("a2x"),ay=n("a2y");
+  let bx=n("b2x"),by=n("b2y");
+  let ext=n("d2");
 
-function extensionCalc(){
+  if(!valid(ax,ay,bx,by,ext)) return;
 
-  const ax=n("ax");
-  const ay=n("ay");
-  const bx=n("bx");
-  const by=n("by");
-  const ext=n("ext");
+  let dx=bx-ax;
+  let dy=by-ay;
+  let d=Math.hypot(dx,dy);
 
-  if(!valid(ax,ay,bx,by,ext)){
+  if(d===0) return;
 
-    document
-    .getElementById("extensionResult")
-    .innerHTML=
-    "数値を入力してください";
+  let x=bx+(dx/d)*ext;
+  let y=by+(dy/d)*ext;
 
-    return;
-  }
-
-  const dx=bx-ax;
-  const dy=by-ay;
-
-  const len=
-  Math.hypot(dx,dy);
-
-  if(len===0){
-
-    document
-    .getElementById("extensionResult")
-    .innerHTML=
-    "A点とB点が同じです";
-
-    return;
-  }
-
-  const cx=
-  bx+(dx/len)*ext;
-
-  const cy=
-  by+(dy/len)*ext;
-
-  document
-  .getElementById("extensionResult")
-  .innerHTML=
-
-  "新点 X = "+
-  cx.toFixed(3)+
-  "<br>"+
-
-  "新点 Y = "+
-  cy.toFixed(3);
-
+  document.getElementById("r2").innerText =
+  "新点 X = "+f(x)+"\n"+
+  "新点 Y = "+f(y);
 }
 
 
-/* =========================
-   ③ A点からB方向
-========================= */
+/* ③ */
+function calc3(){
+  let ax=n("a3x"),ay=n("a3y");
+  let bx=n("b3x"),by=n("b3y");
+  let dist=n("d3");
 
-function pointFromA(){
+  if(!valid(ax,ay,bx,by,dist)) return;
 
-  const ax=n("a3x");
-  const ay=n("a3y");
-  const bx=n("b3x");
-  const by=n("b3y");
-  const dist=n("d3");
+  let dx=bx-ax;
+  let dy=by-ay;
+  let d=Math.hypot(dx,dy);
 
-  if(!valid(ax,ay,bx,by,dist)){
+  if(d===0) return;
 
-    document
-    .getElementById("pointAResult")
-    .innerHTML=
-    "数値を入力してください";
+  let x=ax+(dx/d)*dist;
+  let y=ay+(dy/d)*dist;
 
-    return;
-  }
-
-  const dx=bx-ax;
-  const dy=by-ay;
-
-  const len=
-  Math.hypot(dx,dy);
-
-  if(len===0){
-
-    document
-    .getElementById("pointAResult")
-    .innerHTML=
-    "A点とB点が同じです";
-
-    return;
-  }
-
-  const x=
-  ax+(dx/len)*dist;
-
-  const y=
-  ay+(dy/len)*dist;
-
-  document
-  .getElementById("pointAResult")
-  .innerHTML=
-
-  "新点 X = "+
-  x.toFixed(3)+
-  "<br>"+
-
-  "新点 Y = "+
-  y.toFixed(3);
-
+  document.getElementById("r3").innerText =
+  "新点 X = "+f(x)+"\n"+
+  "新点 Y = "+f(y);
 }
 
 
-/* =========================
-   ④ 円弧半径
-========================= */
+/* ④ */
+function calc4(){
+  let L=n("l4");
+  let h=n("h4");
 
-function radiusCalc(){
+  if(!valid(L,h) || h===0) return;
 
-  const L=n("chord");
-  const h=n("sagitta");
+  let R=(L*L)/(8*h)+h/2;
 
-  if(
-    !valid(L,h) ||
-    L<=0 ||
-    h<=0
-  ){
-
-    document
-    .getElementById("radiusResult")
-    .innerHTML=
-    "弦長と矢高を正しく入力してください";
-
-    return;
-  }
-
-  const R=
-  (L*L)/(8*h)+h/2;
-
-  document
-  .getElementById("radiusResult")
-  .innerHTML=
-  "半径 R = "+
-  R.toFixed(3)+
-  " m";
-
+  document.getElementById("r4").innerText =
+  "半径 R = "+f(R)+" m";
 }
 
 
-/* =========================
-   ⑤ 縮尺
-========================= */
+/* ⑤ */
+function calc5(){
+  let value=n("v5");
+  let from=n("s51");
+  let to=n("s52");
 
-function scaleCalc(){
+  if(!valid(value,from,to) || from===0 || to===0) return;
 
-  const value=n("scaleValue");
-  const from=n("scaleFrom");
-  const to=n("scaleTo");
+  let ans=value*from/to;
 
-  if(
-    !valid(value,from,to) ||
-    from<=0 ||
-    to<=0
-  ){
-
-    document
-    .getElementById("scaleResult")
-    .innerHTML=
-    "数値を確認してください";
-
-    return;
-  }
-
-  const answer=
-  value*(from/to);
-
-  document
-  .getElementById("scaleResult")
-  .innerHTML=
-  "変更後 = "+
-  answer.toFixed(3);
-
+  document.getElementById("r5").innerText =
+  "換算後 = "+f(ans);
 }
 
 
-/* =========================
-   ⑥ 高低差
-========================= */
+/* ⑥ */
+function calc6(){
+  let elevation=n("e6");
+  let diff=n("dh6");
+  let pm=n("pm6");
 
-function heightCalc(){
+  if(!valid(elevation,diff,pm)) return;
 
-  const elevation=
-  n("elevation");
+  let ans=elevation+(diff*pm);
 
-  const diff=
-  n("heightDifference");
-
-  if(!valid(elevation,diff)){
-
-    document
-    .getElementById("heightResult")
-    .innerHTML=
-    "数値を入力してください";
-
-    return;
-  }
-
-  const direction=
-  document
-  .getElementById("heightDirection")
-  .value;
-
-  const result=
-  direction==="plus"
-  ? elevation+diff
-  : elevation-diff;
-
-  document
-  .getElementById("heightResult")
-  .innerHTML=
-  "標高 = "+
-  result.toFixed(3)+
-  " m";
-
+  document.getElementById("r6").innerText =
+  "標高 = "+f(ans)+" m";
 }
 
 
-/* =========================
-   ⑦ 法勾配
-========================= */
+/* ⑦ */
+function calc7(){
+  let H=n("h7");
+  let slope=n("n7");
 
-function slopeCalc(){
+  if(!valid(H,slope)) return;
 
-  const H=n("slopeHeight");
-  const N=n("slopeN");
+  let horizontal=H*slope;
+  let length=Math.hypot(H,horizontal);
 
-  if(
-    !valid(H,N) ||
-    H<0 ||
-    N<0
-  ){
-
-    document
-    .getElementById("slopeResult")
-    .innerHTML=
-    "数値を確認してください";
-
-    return;
-  }
-
-  const horizontal=
-  H*N;
-
-  const slopeLength=
-  Math.hypot(
-    H,
-    horizontal
-  );
-
-  document
-  .getElementById("slopeResult")
-  .innerHTML=
-
-  "水平距離 = "+
-  horizontal.toFixed(3)+
-  " m<br>"+
-
-  "法長 = "+
-  slopeLength.toFixed(3)+
-  " m";
-
+  document.getElementById("r7").innerText =
+  "高さ H = "+f(H)+" m\n"+
+  "勾配 = 1："+slope+"\n"+
+  "水平距離 = "+f(horizontal)+" m\n"+
+  "法長 = "+f(length)+" m";
 }
 
 
-/* =========================
-   ⑧ 法勾配座標
-========================= */
+/* ⑧ */
+function calc8(){
+  let x=n("x8");
+  let y=n("y8");
+  let angle=n("ang8");
+  let H=n("h8");
+  let slope=n("n8");
 
-function slopeCoordinate(){
+  if(!valid(x,y,angle,H,slope)) return;
 
-  const x=n("slopeX");
-  const y=n("slopeY");
+  let horizontal=H*slope;
+  let rad=angle*Math.PI/180;
 
-  const H=
-  n("slopeCoordH");
+  let nx=x+horizontal*Math.cos(rad);
+  let ny=y+horizontal*Math.sin(rad);
 
-  const N=
-  n("slopeCoordN");
+  let length=Math.hypot(H,horizontal);
 
-  const angle=
-  n("slopeAngle");
-
-  if(!valid(x,y,H,N,angle)){
-
-    document
-    .getElementById(
-      "slopeCoordinateResult"
-    )
-    .innerHTML=
-    "数値を入力してください";
-
-    return;
-  }
-
-  const horizontal=
-  H*N;
-
-  const rad=
-  angle*Math.PI/180;
-
-  const nx=
-  x+
-  horizontal*
-  Math.cos(rad);
-
-  const ny=
-  y+
-  horizontal*
-  Math.sin(rad);
-
-  document
-  .getElementById(
-    "slopeCoordinateResult"
-  )
-  .innerHTML=
-
-  "水平距離 = "+
-  horizontal.toFixed(3)+
-  " m<br>"+
-
-  "新点 X = "+
-  nx.toFixed(3)+
-  "<br>"+
-
-  "新点 Y = "+
-  ny.toFixed(3);
-
+  document.getElementById("r8").innerText =
+  "水平距離 = "+f(horizontal)+" m\n"+
+  "法長 = "+f(length)+" m\n"+
+  "新点 X = "+f(nx)+"\n"+
+  "新点 Y = "+f(ny);
 }
 
 
-/* =========================
-   ⑨ 平均断面法
-========================= */
+/* ⑨ */
+function calc9(){
+  let A1=n("a91");
+  let A2=n("a92");
+  let L=n("l9");
 
-function volumeCalc(){
+  if(!valid(A1,A2,L)) return;
 
-  const A1=n("area1");
-  const A2=n("area2");
-  const L=n("sectionLength");
+  let average=(A1+A2)/2;
+  let volume=average*L;
 
-  if(
-    !valid(A1,A2,L) ||
-    A1<0 ||
-    A2<0 ||
-    L<0
-  ){
+  document.getElementById("r9").innerText =
+  "平均断面積 = "+f(average)+" ㎡\n"+
+  "土量 = "+f(volume)+" ㎥";
+}
 
-    document
-    .getElementById("volumeResult")
-    .innerHTML=
-    "数値を確認してください";
 
-    return;
-  }
+/* コピー */
+function copyResult(id){
+  let text=document.getElementById(id).innerText;
 
-  const V=
-  ((A1+A2)/2)*L;
+  if(!text) return;
 
-  document
-  .getElementById("volumeResult")
-  .innerHTML=
-  "土量 = "+
-  V.toFixed(3)+
-  " ㎥";
+  navigator.clipboard.writeText(text)
+  .then(()=>alert("結果をコピーしました"));
+}
 
+
+/* クリア */
+function clearCard(id){
+  let card=document.getElementById(id);
+
+  card.querySelectorAll("input").forEach(el=>{
+    el.value="";
+  });
+
+  card.querySelectorAll(".result").forEach(el=>{
+    el.innerText="";
+  });
 }
 
 </script>
