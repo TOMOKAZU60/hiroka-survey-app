@@ -23,7 +23,7 @@ body{
 header{
   background:#1769aa;
   color:white;
-  padding:18px 12px;
+  padding:16px 12px;
   text-align:center;
 }
 
@@ -33,7 +33,7 @@ header h1{
 }
 
 header p{
-  margin:5px 0 0;
+  margin:4px 0 0;
   font-size:12px;
 }
 
@@ -43,50 +43,57 @@ main{
   padding:10px;
 }
 
-.home-photo{
-  width:100%;
-  max-height:260px;
-  object-fit:cover;
-  border-radius:14px;
-  margin-bottom:12px;
-  display:block;
-}
-
+/* カード */
 .card{
   background:white;
-  margin-bottom:14px;
-  padding:16px;
-  border-radius:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  margin-bottom:10px;
+  padding:13px;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
 
 h2{
-  margin:0 0 12px;
+  margin:0 0 9px;
   font-size:18px;
   color:#1769aa;
 }
 
+/* HOME写真 */
+.home-photo{
+  width:100%;
+  height:auto;
+  max-height:300px;
+  object-fit:contain;
+  border-radius:10px;
+  display:block;
+}
+
+/* 入力部分 */
 label{
   display:block;
   font-size:13px;
-  margin-top:8px;
-  margin-bottom:3px;
+  margin-top:6px;
+  margin-bottom:2px;
 }
 
-input, select{
+input,
+select{
   width:100%;
-  padding:11px;
+  height:42px;
+  padding:7px 9px;
   font-size:16px;
-  border:1px solid #ccc;
-  border-radius:8px;
+  border:1px solid #bbb;
+  border-radius:7px;
+  background:white;
 }
 
+/* 計算ボタン */
 button{
   width:100%;
-  padding:12px;
-  margin-top:12px;
+  padding:10px;
+  margin-top:10px;
   border:none;
-  border-radius:9px;
+  border-radius:8px;
   background:#1769aa;
   color:white;
   font-size:16px;
@@ -97,33 +104,35 @@ button:active{
   opacity:.75;
 }
 
+/* 計算結果 */
 .result{
-  margin-top:12px;
-  padding:11px;
+  margin-top:8px;
+  padding:9px;
   background:#eef6ff;
-  border-radius:8px;
+  border-radius:7px;
   font-weight:bold;
-  line-height:1.7;
-  min-height:44px;
+  line-height:1.5;
+  min-height:38px;
 }
 
+/* Dropbox */
 .dropbox-btn{
   display:block;
   width:100%;
-  padding:15px;
+  padding:13px;
   text-align:center;
   text-decoration:none;
   background:#0061ff;
   color:white;
   font-size:17px;
   font-weight:bold;
-  border-radius:10px;
+  border-radius:9px;
 }
 
 .small{
   font-size:12px;
   color:#666;
-  margin-top:8px;
+  margin-top:7px;
 }
 
 footer{
@@ -144,10 +153,12 @@ footer{
 
 <main>
 
-<!-- HOME写真 -->
+<!-- HOME -->
 <div class="card">
   <h2>🏠 HOME</h2>
-  <img src="home.jpg" class="home-photo" alt="広川護岸 現場写真">
+  <img src="home.jpg"
+       class="home-photo"
+       alt="広川護岸 HOME">
 </div>
 
 <!-- Dropbox -->
@@ -166,7 +177,7 @@ footer{
   </div>
 </div>
 
-<!-- ① 2点間距離 -->
+<!-- ① -->
 <div class="card">
 <h2>① 2点間距離</h2>
 
@@ -188,7 +199,7 @@ footer{
 </div>
 
 
-<!-- ② A→B 延長座標 -->
+<!-- ② -->
 <div class="card">
 <h2>② A→B 延長座標</h2>
 
@@ -213,7 +224,7 @@ footer{
 </div>
 
 
-<!-- ③ A点からB方向へ -->
+<!-- ③ -->
 <div class="card">
 <h2>③ A点からB方向へ指定距離</h2>
 
@@ -238,7 +249,7 @@ footer{
 </div>
 
 
-<!-- ④ 円弧半径 -->
+<!-- ④ -->
 <div class="card">
 <h2>④ 円弧半径</h2>
 
@@ -254,7 +265,7 @@ footer{
 </div>
 
 
-<!-- ⑤ 縮尺換算 -->
+<!-- ⑤ -->
 <div class="card">
 <h2>⑤ 縮尺換算</h2>
 
@@ -273,7 +284,7 @@ footer{
 </div>
 
 
-<!-- ⑥ 高低差 -->
+<!-- ⑥ -->
 <div class="card">
 <h2>⑥ 高低差・標高計算</h2>
 
@@ -294,7 +305,7 @@ footer{
 </div>
 
 
-<!-- ⑦ 法勾配 -->
+<!-- ⑦ -->
 <div class="card">
 <h2>⑦ 法勾配計算</h2>
 
@@ -310,7 +321,7 @@ footer{
 </div>
 
 
-<!-- ⑧ 法勾配座標 -->
+<!-- ⑧ -->
 <div class="card">
 <h2>⑧ 法勾配 座標計算</h2>
 
@@ -335,7 +346,7 @@ footer{
 </div>
 
 
-<!-- ⑨ 面積・土量 -->
+<!-- ⑨ -->
 <div class="card">
 <h2>⑨ 平均断面法 土量計算</h2>
 
@@ -373,7 +384,7 @@ function valid(){
   return true;
 }
 
-/* ① 距離 */
+/* ① 2点間距離 */
 function distanceCalc(){
 
   const x1=n("x1");
@@ -382,7 +393,8 @@ function distanceCalc(){
   const y2=n("y2");
 
   if(!valid(x1,y1,x2,y2)){
-    document.getElementById("distanceResult").innerHTML="数値を入力してください";
+    document.getElementById("distanceResult").innerHTML=
+    "数値を入力してください";
     return;
   }
 
@@ -403,7 +415,8 @@ function extensionCalc(){
   const ext=n("ext");
 
   if(!valid(ax,ay,bx,by,ext)){
-    document.getElementById("extensionResult").innerHTML="数値を入力してください";
+    document.getElementById("extensionResult").innerHTML=
+    "数値を入力してください";
     return;
   }
 
@@ -412,7 +425,8 @@ function extensionCalc(){
   const len=Math.hypot(dx,dy);
 
   if(len===0){
-    document.getElementById("extensionResult").innerHTML="A点とB点が同じです";
+    document.getElementById("extensionResult").innerHTML=
+    "A点とB点が同じです";
     return;
   }
 
@@ -425,7 +439,7 @@ function extensionCalc(){
 }
 
 
-/* ③ AからB方向 */
+/* ③ A点からB方向 */
 function pointFromA(){
 
   const ax=n("a3x");
@@ -435,7 +449,8 @@ function pointFromA(){
   const dist=n("d3");
 
   if(!valid(ax,ay,bx,by,dist)){
-    document.getElementById("pointAResult").innerHTML="数値を入力してください";
+    document.getElementById("pointAResult").innerHTML=
+    "数値を入力してください";
     return;
   }
 
@@ -444,7 +459,8 @@ function pointFromA(){
   const len=Math.hypot(dx,dy);
 
   if(len===0){
-    document.getElementById("pointAResult").innerHTML="A点とB点が同じです";
+    document.getElementById("pointAResult").innerHTML=
+    "A点とB点が同じです";
     return;
   }
 
@@ -484,7 +500,8 @@ function scaleCalc(){
   const to=n("scaleTo");
 
   if(!valid(value,from,to) || from<=0 || to<=0){
-    document.getElementById("scaleResult").innerHTML="数値を確認してください";
+    document.getElementById("scaleResult").innerHTML=
+    "数値を確認してください";
     return;
   }
 
@@ -495,18 +512,20 @@ function scaleCalc(){
 }
 
 
-/* ⑥ 高さ */
+/* ⑥ 高低差 */
 function heightCalc(){
 
   const elevation=n("elevation");
   const diff=n("heightDifference");
 
   if(!valid(elevation,diff)){
-    document.getElementById("heightResult").innerHTML="数値を入力してください";
+    document.getElementById("heightResult").innerHTML=
+    "数値を入力してください";
     return;
   }
 
-  const direction=document.getElementById("heightDirection").value;
+  const direction=
+  document.getElementById("heightDirection").value;
 
   const result=
   direction==="plus"
@@ -525,7 +544,8 @@ function slopeCalc(){
   const N=n("slopeN");
 
   if(!valid(H,N) || H<0 || N<0){
-    document.getElementById("slopeResult").innerHTML="数値を確認してください";
+    document.getElementById("slopeResult").innerHTML=
+    "数値を確認してください";
     return;
   }
 
@@ -574,7 +594,8 @@ function volumeCalc(){
   const L=n("sectionLength");
 
   if(!valid(A1,A2,L) || A1<0 || A2<0 || L<0){
-    document.getElementById("volumeResult").innerHTML="数値を確認してください";
+    document.getElementById("volumeResult").innerHTML=
+    "数値を確認してください";
     return;
   }
 
