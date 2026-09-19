@@ -297,6 +297,74 @@ function slopeCalc(){
 }
 
 </script>
+<!-- 法勾配の座標計算 -->
+<div class="card">
+  <h2>法勾配の座標計算</h2>
 
+  <label>基準点 X</label>
+  <input type="number" id="noriX" step="0.001">
+
+  <label>基準点 Y</label>
+  <input type="number" id="noriY" step="0.001">
+
+  <label>方向点 X</label>
+  <input type="number" id="noriX2" step="0.001">
+
+  <label>方向点 Y</label>
+  <input type="number" id="noriY2" step="0.001">
+
+  <label>高さ H（m）</label>
+  <input type="number" id="noriH" step="0.001">
+
+  <label>法勾配 1 : n</label>
+  <input type="number" id="noriN" value="0.5" step="0.001">
+
+  <label>方向</label>
+  <select id="noriSide">
+    <option value="1">右側</option>
+    <option value="-1">左側</option>
+  </select>
+
+  <button onclick="calcNori()">計算</button>
+
+  <div id="noriResult"></div>
+</div>
+
+<script>
+function calcNori() {
+  const x1 = Number(document.getElementById("noriX").value);
+  const y1 = Number(document.getElementById("noriY").value);
+  const x2 = Number(document.getElementById("noriX2").value);
+  const y2 = Number(document.getElementById("noriY2").value);
+  const h  = Number(document.getElementById("noriH").value);
+  const n  = Number(document.getElementById("noriN").value);
+  const side = Number(document.getElementById("noriSide").value);
+
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy);
+
+  if (len === 0) {
+    document.getElementById("noriResult").innerHTML =
+      "基準点と方向点を別の座標にしてください。";
+    return;
+  }
+
+  // 高さから水平距離を計算
+  const d = h * n;
+
+  // 基準線に対する直角方向
+  const px = (-dy / len) * d * side;
+  const py = ( dx / len) * d * side;
+
+  const newX = x1 + px;
+  const newY = y1 + py;
+
+  document.getElementById("noriResult").innerHTML =
+    "<b>水平距離：</b>" + d.toFixed(3) + " m<br>" +
+    "<b>新点 X：</b>" + newX.toFixed(3) + "<br>" +
+    "<b>新点 Y：</b>" + newY.toFixed(3);
+}
+</script>
 </body>
 </html>
