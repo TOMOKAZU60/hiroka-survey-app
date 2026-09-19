@@ -17,14 +17,10 @@ content="width=device-width,initial-scale=1.0,viewport-fit=cover">
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   margin:0;
-  padding-bottom:90px;
-  background:#f4f6f8;
+  padding-bottom:88px;
+  background:#f3f5f7;
   color:#222;
 
   font-family:
@@ -35,14 +31,12 @@ body{
 }
 
 
-/* =========================
-   ヘッダー
-========================= */
+/* ヘッダー */
 
 header{
-  background:linear-gradient(#1597e4,#0877bd);
-  color:white;
-  padding:24px 28px 18px;
+  background:linear-gradient(135deg,#149be8,#0876ba);
+  color:#fff;
+  padding:22px 22px 18px;
 }
 
 header h1{
@@ -52,9 +46,13 @@ header h1{
 }
 
 header p{
-  margin:10px 0 0;
-  font-size:15px;
+  margin:7px 0 0;
+  font-size:14px;
+  opacity:.92;
 }
+
+
+/* メイン */
 
 main{
   max-width:720px;
@@ -62,9 +60,7 @@ main{
 }
 
 
-/* =========================
-   HOME写真
-========================= */
+/* HOME写真 */
 
 .home-photo{
   display:block;
@@ -73,157 +69,71 @@ main{
 }
 
 
-/* =========================
-   ①〜⑨ 計算メニュー
-========================= */
+/* HOMEメニュー */
 
-.quick{
+.home-menu{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:16px;
-  padding:18px;
+
+  padding:20px 18px;
 }
 
-.quick a{
-  min-height:150px;
-  padding:22px 12px;
+
+/* 大ボタン */
+
+.home-btn{
+  min-height:155px;
 
   display:flex;
+  flex-direction:column;
+
   align-items:center;
   justify-content:center;
 
-  border-radius:22px;
+  gap:10px;
 
-  color:white;
+  border-radius:23px;
+
+  color:#fff;
+
   text-decoration:none;
   text-align:center;
 
-  font-size:21px;
+  font-size:22px;
   font-weight:800;
 
   box-shadow:
-  0 5px 12px rgba(0,0,0,.18);
+  0 5px 14px rgba(0,0,0,.17);
 
   -webkit-tap-highlight-color:transparent;
+
+  transition:
+  transform .08s ease,
+  opacity .08s ease;
 }
 
 
-/* ① */
-.quick a:nth-child(1){
+.home-btn:active{
+  transform:scale(.97);
+  opacity:.9;
+}
+
+
+/* アイコン */
+
+.home-btn .icon{
+  font-size:43px;
+  line-height:1;
+}
+
+
+/* 計算 */
+
+.calc{
   background:
   linear-gradient(145deg,#36a7ff,#087be0);
-}
-
-
-/* ② */
-.quick a:nth-child(2){
-  background:
-  linear-gradient(145deg,#35cf76,#08a84c);
-}
-
-
-/* ③ */
-.quick a:nth-child(3){
-  background:
-  linear-gradient(145deg,#ff9a47,#ff6f19);
-}
-
-
-/* ④ */
-.quick a:nth-child(4){
-  background:
-  linear-gradient(145deg,#b45cff,#7d26dc);
-}
-
-
-/* ⑤ */
-.quick a:nth-child(5){
-  background:
-  linear-gradient(145deg,#ff6686,#e73661);
-}
-
-
-/* ⑥ */
-.quick a:nth-child(6){
-  background:
-  linear-gradient(145deg,#39c8c4,#159b9a);
-}
-
-
-/* ⑦ */
-.quick a:nth-child(7){
-  background:
-  linear-gradient(145deg,#ffd34f,#e7a900);
-}
-
-
-/* ⑧ */
-.quick a:nth-child(8){
-  background:
-  linear-gradient(145deg,#6f82ff,#4a55d8);
-}
-
-
-/* ⑨ */
-.quick a:nth-child(9){
-  background:
-  linear-gradient(145deg,#8e9ba8,#64717e);
-
-  grid-column:1/-1;
-}
-
-
-/* =========================
-   設定・アプリ
-========================= */
-
-.card{
-  background:white;
-
-  margin:0 18px 18px;
-  padding:18px;
-
-  border-radius:18px;
-
-  box-shadow:
-  0 3px 12px rgba(0,0,0,.10);
-}
-
-.card h2{
-  margin:0 0 14px;
-
-  color:#0877bd;
-  font-size:20px;
-}
-
-
-/* 共通ボタン */
-
-.linkbtn{
-  display:flex;
-
-  width:100%;
-  min-height:58px;
-
-  margin-top:12px;
-  padding:13px 15px;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:13px;
-
-  color:white;
-  text-align:center;
-  text-decoration:none;
-
-  font-size:16px;
-  font-weight:700;
-
-  box-shadow:
-  0 3px 8px rgba(0,0,0,.13);
-
-  -webkit-tap-highlight-color:transparent;
 }
 
 
@@ -231,15 +141,15 @@ main{
 
 .sitebox{
   background:
-  linear-gradient(145deg,#28a86f,#16835d);
+  linear-gradient(145deg,#38c77c,#079e4c);
 }
 
 
 /* 数量表 */
 
-.document{
+.quantity{
   background:
-  linear-gradient(145deg,#2f9d62,#217346);
+  linear-gradient(145deg,#ff9d49,#f36b19);
 }
 
 
@@ -247,13 +157,20 @@ main{
 
 .drawing{
   background:
-  linear-gradient(145deg,#6f82ff,#4a55d8);
+  linear-gradient(145deg,#a75cff,#712bd1);
 }
 
 
-/* =========================
-   下部メニュー
-========================= */
+/* 補足文字 */
+
+.home-btn small{
+  font-size:12px;
+  font-weight:600;
+  opacity:.9;
+}
+
+
+/* 下部ナビ */
 
 .bottomnav{
   position:fixed;
@@ -265,19 +182,15 @@ main{
   height:76px;
 
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   background:
   rgba(255,255,255,.96);
 
-  border-top:
-  1px solid #ddd;
+  border-top:1px solid #ddd;
 
-  backdrop-filter:
-  blur(14px);
-
-  -webkit-backdrop-filter:
-  blur(14px);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
 
   z-index:99;
 
@@ -296,20 +209,17 @@ main{
 
   gap:3px;
 
-  color:#333;
+  color:#555;
 
   text-decoration:none;
 
   font-size:12px;
   font-weight:700;
-
-  -webkit-tap-highlight-color:
-  transparent;
 }
 
 
 .bottomnav .ico{
-  font-size:25px;
+  font-size:24px;
 }
 
 
@@ -318,24 +228,20 @@ main{
 }
 
 
-/* =========================
-   フッター
-========================= */
+/* フッター */
 
 footer{
-  padding:15px;
+  padding:5px 15px 20px;
 
   text-align:center;
 
-  color:#777;
+  color:#888;
 
   font-size:11px;
 }
 
 
-/* =========================
-   iPhone小画面
-========================= */
+/* iPhone */
 
 @media(max-width:390px){
 
@@ -343,23 +249,18 @@ footer{
     font-size:22px;
   }
 
-  header p{
-    font-size:13px;
+  .home-menu{
+    gap:13px;
+    padding:16px 14px;
   }
 
-  .quick{
-    gap:12px;
-    padding:14px;
+  .home-btn{
+    min-height:140px;
+    font-size:20px;
   }
 
-  .quick a{
-    min-height:132px;
-    font-size:19px;
-  }
-
-  .card{
-    margin-left:14px;
-    margin-right:14px;
+  .home-btn .icon{
+    font-size:39px;
   }
 }
 
@@ -370,10 +271,6 @@ footer{
 <body>
 
 
-<!-- =====================
-     HEADER
-===================== -->
-
 <header>
 
 <h1>
@@ -381,7 +278,7 @@ footer{
 </h1>
 
 <p>
-安全・品質・確実な施工　地域の未来をつくる
+現場管理・測量ツール
 </p>
 
 </header>
@@ -391,9 +288,7 @@ footer{
 <main>
 
 
-<!-- =====================
-     HOME写真
-===================== -->
+<!-- HOME写真 -->
 
 <img
 src="home.jpg"
@@ -402,84 +297,50 @@ alt="広川護岸（17工区）工事">
 
 
 
-<!-- =====================
-     計算メニュー
-===================== -->
+<!-- HOME 大ボタン -->
 
-<div class="quick">
+<div class="home-menu">
 
 
-<a href="calc.html#c1">
-① 2点間距離
+<!-- 計算 -->
+
+<a
+href="calc.html"
+class="home-btn calc">
+
+<span class="icon">
+🧮
+</span>
+
+<span>
+計算
+</span>
+
+<small>
+測量・現場計算
+</small>
+
 </a>
-
-
-<a href="calc.html#c2">
-② B点延長
-</a>
-
-
-<a href="calc.html#c3">
-③ 円弧半径
-</a>
-
-
-<a href="calc.html#c4">
-④ 法面 1：n
-</a>
-
-
-<a href="calc.html#c5">
-⑤ 法勾配座標
-</a>
-
-
-<a href="calc.html#c6">
-⑥ 高さ→水平距離
-</a>
-
-
-<a href="calc.html#c7">
-⑦ 肩→尻
-</a>
-
-
-<a href="calc.html#c8">
-⑧ 距離・方向角
-</a>
-
-
-<a href="calc.html#c9">
-⑨ 座標オフセット
-</a>
-
-
-</div>
-
-
-
-<!-- =====================
-     設定・アプリ
-===================== -->
-
-<section
-class="card"
-id="settings">
-
-
-<h2>
-⚙️ 設定・アプリ
-</h2>
 
 
 
 <!-- SiteBox -->
 
 <a
-class="linkbtn sitebox"
-href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
+href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F"
+class="home-btn sitebox">
 
-📷 SiteBoxを開く
+<span class="icon">
+📷
+</span>
+
+<span>
+SiteBox
+</span>
+
+<small>
+現場写真
+</small>
 
 </a>
 
@@ -488,10 +349,20 @@ href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
 <!-- 数量表 -->
 
 <a
-class="linkbtn document"
-href="金入.pdf">
+href="金入.pdf"
+class="home-btn quantity">
 
-📊 数量表
+<span class="icon">
+📊
+</span>
+
+<span>
+数量表
+</span>
+
+<small>
+PDF
+</small>
 
 </a>
 
@@ -500,15 +371,25 @@ href="金入.pdf">
 <!-- 図面 -->
 
 <a
-class="linkbtn drawing"
-href="図面（507-45679-002）.dwx">
+href="図面（507-45679-002）.dwx"
+class="home-btn drawing">
 
-📐 図面
+<span class="icon">
+📐
+</span>
+
+<span>
+図面
+</span>
+
+<small>
+設計図面
+</small>
 
 </a>
 
 
-</section>
+</div>
 
 
 </main>
@@ -516,25 +397,19 @@ href="図面（507-45679-002）.dwx">
 
 
 <footer>
-
 広川護岸（17工区）工事
-
 </footer>
 
 
 
-<!-- =====================
-     下部ナビゲーション
-===================== -->
+<!-- 下部メニュー -->
 
 <nav class="bottomnav">
 
 
-<!-- HOME -->
-
 <a
-class="active"
-href="index.html">
+href="index.html"
+class="active">
 
 <span class="ico">
 🏠
@@ -548,12 +423,10 @@ href="index.html">
 
 
 
-<!-- 計算 -->
-
 <a href="calc.html">
 
 <span class="ico">
-☷
+🧮
 </span>
 
 <span>
@@ -563,8 +436,6 @@ href="index.html">
 </a>
 
 
-
-<!-- 写真 / SiteBox -->
 
 <a
 href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
@@ -581,32 +452,14 @@ href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
 
 
 
-<!-- 土量 -->
-
-<a href="calc.html#c9">
+<a href="金入.pdf">
 
 <span class="ico">
-📝
+📊
 </span>
 
 <span>
-土量
-</span>
-
-</a>
-
-
-
-<!-- 設定 -->
-
-<a href="#settings">
-
-<span class="ico">
-⚙️
-</span>
-
-<span>
-設定
+数量表
 </span>
 
 </a>
