@@ -19,7 +19,7 @@ content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
 body{
   margin:0;
-  padding-bottom:88px;
+  padding-bottom:90px;
   background:#f3f5f7;
   color:#222;
 
@@ -31,10 +31,10 @@ body{
 }
 
 
-/* ヘッダー */
+/* ===== ヘッダー ===== */
 
 header{
-  background:linear-gradient(135deg,#149be8,#0876ba);
+  background:linear-gradient(135deg,#159be8,#0876ba);
   color:#fff;
   padding:22px 22px 18px;
 }
@@ -52,7 +52,7 @@ header p{
 }
 
 
-/* メイン */
+/* ===== メイン ===== */
 
 main{
   max-width:720px;
@@ -60,7 +60,7 @@ main{
 }
 
 
-/* HOME写真 */
+/* ===== HOME写真 ===== */
 
 .home-photo{
   display:block;
@@ -69,19 +69,14 @@ main{
 }
 
 
-/* HOMEメニュー */
+/* ===== 大ボタン ===== */
 
 .home-menu{
   display:grid;
   grid-template-columns:1fr 1fr;
-
   gap:16px;
-
   padding:20px 18px;
 }
-
-
-/* 大ボタン */
 
 .home-btn{
   min-height:155px;
@@ -96,7 +91,7 @@ main{
 
   border-radius:23px;
 
-  color:#fff;
+  color:white;
 
   text-decoration:none;
   text-align:center;
@@ -108,24 +103,21 @@ main{
   0 5px 14px rgba(0,0,0,.17);
 
   -webkit-tap-highlight-color:transparent;
-
-  transition:
-  transform .08s ease,
-  opacity .08s ease;
 }
-
 
 .home-btn:active{
   transform:scale(.97);
-  opacity:.9;
 }
-
-
-/* アイコン */
 
 .home-btn .icon{
   font-size:43px;
   line-height:1;
+}
+
+.home-btn small{
+  font-size:12px;
+  font-weight:600;
+  opacity:.9;
 }
 
 
@@ -161,16 +153,20 @@ main{
 }
 
 
-/* 補足文字 */
+/* ===== フッター ===== */
 
-.home-btn small{
-  font-size:12px;
-  font-weight:600;
-  opacity:.9;
+footer{
+  padding:5px 15px 20px;
+
+  text-align:center;
+
+  color:#888;
+
+  font-size:11px;
 }
 
 
-/* 下部ナビ */
+/* ===== 下部ナビ ===== */
 
 .bottomnav{
   position:fixed;
@@ -198,10 +194,8 @@ main{
   env(safe-area-inset-bottom);
 }
 
-
 .bottomnav a{
   display:flex;
-
   flex-direction:column;
 
   align-items:center;
@@ -217,31 +211,16 @@ main{
   font-weight:700;
 }
 
-
 .bottomnav .ico{
   font-size:24px;
 }
-
 
 .bottomnav .active{
   color:#0785d6;
 }
 
 
-/* フッター */
-
-footer{
-  padding:5px 15px 20px;
-
-  text-align:center;
-
-  color:#888;
-
-  font-size:11px;
-}
-
-
-/* iPhone */
+/* ===== iPhone ===== */
 
 @media(max-width:390px){
 
@@ -297,7 +276,7 @@ alt="広川護岸（17工区）工事">
 
 
 
-<!-- HOME 大ボタン -->
+<!-- メインメニュー -->
 
 <div class="home-menu">
 
@@ -305,20 +284,14 @@ alt="広川護岸（17工区）工事">
 <!-- 計算 -->
 
 <a
-href="calc.html"
+href="calc/"
 class="home-btn calc">
 
-<span class="icon">
-🧮
-</span>
+<span class="icon">🧮</span>
 
-<span>
-計算
-</span>
+<span>現場計算</span>
 
-<small>
-測量・現場計算
-</small>
+<small>測量・計算ツール</small>
 
 </a>
 
@@ -330,17 +303,11 @@ class="home-btn calc">
 href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F"
 class="home-btn sitebox">
 
-<span class="icon">
-📷
-</span>
+<span class="icon">📷</span>
 
-<span>
-SiteBox
-</span>
+<span>SiteBox</span>
 
-<small>
-現場写真
-</small>
+<small>現場写真</small>
 
 </a>
 
@@ -352,17 +319,11 @@ SiteBox
 href="金入.pdf"
 class="home-btn quantity">
 
-<span class="icon">
-📊
-</span>
+<span class="icon">📊</span>
 
-<span>
-数量表
-</span>
+<span>数量表</span>
 
-<small>
-PDF
-</small>
+<small>PDF</small>
 
 </a>
 
@@ -374,17 +335,11 @@ PDF
 href="図面（507-45679-002）.dwx"
 class="home-btn drawing">
 
-<span class="icon">
-📐
-</span>
+<span class="icon">📐</span>
 
-<span>
-図面
-</span>
+<span>図面</span>
 
-<small>
-設計図面
-</small>
+<small>設計図面</small>
 
 </a>
 
@@ -402,7 +357,7 @@ class="home-btn drawing">
 
 
 
-<!-- 下部メニュー -->
+<!-- 下部ナビ -->
 
 <nav class="bottomnav">
 
@@ -411,27 +366,17 @@ class="home-btn drawing">
 href="index.html"
 class="active">
 
-<span class="ico">
-🏠
-</span>
-
-<span>
-ホーム
-</span>
+<span class="ico">🏠</span>
+<span>ホーム</span>
 
 </a>
 
 
 
-<a href="calc.html">
+<a href="calc/">
 
-<span class="ico">
-🧮
-</span>
-
-<span>
-計算
-</span>
+<span class="ico">🧮</span>
+<span>計算</span>
 
 </a>
 
@@ -440,13 +385,8 @@ class="active">
 <a
 href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
 
-<span class="ico">
-📷
-</span>
-
-<span>
-写真
-</span>
+<span class="ico">📷</span>
+<span>写真</span>
 
 </a>
 
@@ -454,13 +394,8 @@ href="shortcuts://run-shortcut?name=SiteBox%E3%82%92%E9%96%8B%E3%81%8F">
 
 <a href="金入.pdf">
 
-<span class="ico">
-📊
-</span>
-
-<span>
-数量表
-</span>
+<span class="ico">📊</span>
+<span>数量表</span>
 
 </a>
 
